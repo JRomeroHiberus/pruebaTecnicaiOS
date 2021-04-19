@@ -9,6 +9,7 @@ import UIKit
 
 class ItemViewController: UITableViewController {
     var itemData : ItemData!
+    var cartaStore: CartaStore!
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
         return itemData.almacenItems.count
@@ -28,12 +29,22 @@ class ItemViewController: UITableViewController {
         itemData = ItemData()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 65
-        
-        for _ in 0...5 {
+        cartaStore = CartaStore()
+       /* for _ in 0...5 {
             itemData.crearItem()
         }
         for i in 0...5 {
             print(itemData.almacenItems[i])
+        }*/
+        
+        cartaStore.fetchCards{
+            (cardsResult) in
+            switch cardsResult{
+            case let .success(item):
+                print("fetch correcto")
+            case let .failure(error):
+                print("error haciendo el fetch")
+            }
         }
     }
     

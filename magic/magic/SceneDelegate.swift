@@ -20,6 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       /* let itemStore = ItemData()
         let itemsController = window!.rootViewController as! ItemViewController
         itemsController.itemData = itemStore*/
+        
+       /* let rootViewController = window!.rootViewController as! UINavigationController
+        let itemsViewController = rootViewController.topViewController as! ItemViewController
+        itemsViewController.cartaStore = CartaStore()*/
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -13,8 +13,17 @@ class Item: Equatable, Codable{
     }
     
     var name: String
+    var descr : String
+    var image: UIImage
     
-    init(name:String){
+    init(name:String, descr:String){
         self.name = name
+        self.descr = descr
+    }
+    
+    enum CodingKeys: String,CodingKey{
+        case name
+        case descr = "originalText"
+        case image = "imageUrl"
     }
 }
