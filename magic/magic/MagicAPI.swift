@@ -42,7 +42,8 @@ struct MagicAPI{
         do{
             let decoder = JSONDecoder()
             let magicResponse = try decoder.decode(MagicResponse.self, from:data)
-            return .success(magicResponse.cards)
+            let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+            return .success(cards)
         } catch{
             return .failure(error)
         }

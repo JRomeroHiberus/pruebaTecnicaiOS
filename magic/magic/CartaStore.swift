@@ -5,9 +5,16 @@
 //  Created by José Manuel Romero Clavería on 19/4/21.
 //
 
-import Foundation
+import UIKit
 
 class CartaStore {
+    
+    enum CartaError: Error {
+        case creacionImagenError
+        case URLfalta
+    }
+    
+    
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
@@ -32,7 +39,9 @@ class CartaStore {
             
             
             let result = self.processCardsRequest(data: data, error: error)
-            completion(result)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
         }
         task.resume()
     }
@@ -45,4 +54,37 @@ class CartaStore {
         
         return MagicAPI.cards(fromJSON: jsonData)
     }
+    
+    
+    
+    func fetchImagen(for carta: Carta, completion: @escaping (Result<UIImage, Error>) -> Void){
+        guard let cartaURL = carta.imageUrl else{
+            completion(.failure(CartaError.URLfalta))
+            return
+        }
+      
+        let request = URLRequest(url: cartaURL)
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            
+            let result = self.procesaImagenRequest(data: data, error: error)
+            OperationQueue.main.addOperation {
+                completion(result)
+            }
+        }
+        task.resume()
+    }
+    
+    func procesaImagenRequest(data: Data?, error: Error?) -> Result<UIImage, Error> {
+        guard let imageData = data, let image = UIImage(data: imageData) else{
+            if data == nil {
+                return .failure(error!)
+            } else{
+                return .failure(CartaError.creacionImagenError)
+            }
+        }
+        
+        return .success(image)
+    }
+    
 }

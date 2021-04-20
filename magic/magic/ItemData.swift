@@ -9,7 +9,7 @@ import UIKit
 class ItemData{
     var almacenItems = [Carta]()
     
-    func crearItem(item:Carta){
+    func addItem(item:Carta){
        
         
         almacenItems.append(item)
