@@ -22,12 +22,13 @@ struct MagicAPI{
         let queryItems = [URLQueryItem]()
         componentes.queryItems = queryItems
         
+        //return URL(string: URLcartas)!
         return componentes.url!
     }
     
     
     struct MagicResponse: Codable{
-        let cards: [Item]
+        let cards: [Carta]
         
     }
     
@@ -37,7 +38,7 @@ struct MagicAPI{
     }*/
     
     
-    static func cards(fromJSON data : Data) -> Result<[Item] , Error> {
+    static func cards(fromJSON data : Data) -> Result<[Carta] , Error> {
         do{
             let decoder = JSONDecoder()
             let magicResponse = try decoder.decode(MagicResponse.self, from:data)

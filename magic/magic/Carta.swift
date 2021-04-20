@@ -7,14 +7,14 @@
 
 import UIKit
 
-class Item: Equatable, Codable{
-    static func == (lhs: Item, rhs: Item) -> Bool {
+class Carta: Equatable, Codable{
+    static func == (lhs: Carta, rhs: Carta) -> Bool {
         return lhs.name == rhs.name
     }
     
     var name: String
     var descr : String
-    var image: UIImage
+    //var image: UIImage
     
     init(name:String, descr:String){
         self.name = name
@@ -23,7 +23,7 @@ class Item: Equatable, Codable{
     
     enum CodingKeys: String,CodingKey{
         case name
-        case descr = "originalText"
-        case image = "imageUrl"
+        case descr = "type"
+        //case image = "imageUrl"
     }
 }

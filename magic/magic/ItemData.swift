@@ -7,12 +7,12 @@
 
 import UIKit
 class ItemData{
-    var almacenItems = [Item]()
+    var almacenItems = [Carta]()
     
-    func crearItem(){
-        let nuevoItem = Item (name: "equis")
+    func crearItem(item:Carta){
+       
         
-        almacenItems.append(nuevoItem)
+        almacenItems.append(item)
     }
     
     
