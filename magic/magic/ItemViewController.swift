@@ -86,5 +86,18 @@ class ItemViewController: UITableViewController {
                 self.tableView.reloadData()
             })
     }
-
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showCard":
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let card = itemData.almacenItems[row]
+                let infoItemController = segue.destination as! InfoItemController
+                infoItemController.carta = card
+            }
+        default: preconditionFailure("Unexpected segue identifier")
+        }
+    }
 }

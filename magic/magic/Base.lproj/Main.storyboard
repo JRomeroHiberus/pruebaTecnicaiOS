@@ -16,42 +16,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jmromero@hiberus.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccW-SE-XG7">
-                                <rect key="frame" x="24" y="361" width="366" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19/04/2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgl-Pb-77Z">
-                                <rect key="frame" x="115" y="630.5" width="184" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="José Manuel Romero" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="OfJ-o1-fCf">
-                                <rect key="frame" x="29.218441273344979" y="60" width="355.00000000000011" height="43.999999999999943"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dis-9s-xDZ">
-                                <rect key="frame" x="174" y="787" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Continuar"/>
-                                <connections>
-                                    <segue destination="7fO-sX-Gzq" kind="show" id="Ung-Nb-2b2"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ypw-jb-dTe">
+                                <rect key="frame" x="0.0" y="8" width="414" height="792"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jose Manuel Romero Claveria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEZ-AR-d69" userLabel="Jose Manuel Romero Claveria">
+                                        <rect key="frame" x="95" y="0.0" width="224.5" height="198"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jmromero@hiberus.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODC-5E-1Dp">
+                                        <rect key="frame" x="112.5" y="198" width="189.5" height="198"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="189.5" id="s0U-a4-L7E"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19/04/2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNs-Rc-ePL">
+                                        <rect key="frame" x="164" y="396" width="86" height="198"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dis-9s-xDZ">
+                                        <rect key="frame" x="173.5" y="594" width="67" height="198"/>
+                                        <state key="normal" title="Continuar"/>
+                                        <connections>
+                                            <segue destination="7fO-sX-Gzq" kind="show" id="Ung-Nb-2b2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZGP-dI-fCs"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.95686274510000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ccW-SE-XG7" firstAttribute="centerX" secondItem="Lxb-3I-qAh" secondAttribute="centerX" id="AOL-n1-0u6"/>
-                            <constraint firstItem="ZGP-dI-fCs" firstAttribute="bottom" secondItem="ccW-SE-XG7" secondAttribute="bottom" multiplier="6:3" id="G3L-o1-NIt"/>
-                            <constraint firstItem="ZGP-dI-fCs" firstAttribute="bottom" secondItem="xgl-Pb-77Z" secondAttribute="bottom" multiplier="6:5" id="TOh-PY-ddO"/>
-                            <constraint firstItem="xgl-Pb-77Z" firstAttribute="centerX" secondItem="Lxb-3I-qAh" secondAttribute="centerX" id="c14-pT-ow8"/>
-                            <constraint firstItem="ZGP-dI-fCs" firstAttribute="bottom" secondItem="OfJ-o1-fCf" secondAttribute="bottom" multiplier="6:1" id="fas-gf-lbR"/>
-                            <constraint firstItem="OfJ-o1-fCf" firstAttribute="centerX" secondItem="Lxb-3I-qAh" secondAttribute="centerX" id="nDc-GE-2cA"/>
+                            <constraint firstItem="ZGP-dI-fCs" firstAttribute="bottom" secondItem="ypw-jb-dTe" secondAttribute="bottom" constant="8" id="B8Z-aN-JeT"/>
+                            <constraint firstItem="ypw-jb-dTe" firstAttribute="top" secondItem="ZGP-dI-fCs" secondAttribute="top" constant="8" id="Fud-pv-8Sz"/>
+                            <constraint firstItem="ZGP-dI-fCs" firstAttribute="trailing" secondItem="ypw-jb-dTe" secondAttribute="trailing" id="IPS-EE-ijb"/>
+                            <constraint firstItem="ypw-jb-dTe" firstAttribute="leading" secondItem="ZGP-dI-fCs" secondAttribute="leading" id="haK-UY-MXX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FNu-WD-uTi"/>
@@ -90,7 +95,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="TextoCell" destination="DvW-Da-f1x" id="FSl-HN-fyA"/>
-                                    <segue destination="aKb-gd-ZmB" kind="show" id="Lpk-A0-AAp"/>
+                                    <segue destination="aKb-gd-ZmB" kind="show" identifier="showCard" id="Lpk-A0-AAp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -108,34 +113,47 @@
         <!--InfoItemController-->
         <scene sceneID="vUD-Iq-5rS">
             <objects>
-                <viewController id="aKb-gd-ZmB" userLabel="InfoItemController" sceneMemberID="viewController">
+                <viewController id="aKb-gd-ZmB" userLabel="InfoItemController" customClass="InfoItemController" customModule="magic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4V1-Cj-2LB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6A-Mu-WD0">
-                                <rect key="frame" x="186" y="262" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OrN-ti-Vka">
-                                <rect key="frame" x="78" y="431" width="258" height="239"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hW-xZ-L48">
-                                <rect key="frame" x="186" y="94" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gYR-VV-qnR">
+                                <rect key="frame" x="0.0" y="8" width="414" height="792"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dg-ta-XyS" userLabel="Nombre">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN7-jL-VjQ" userLabel="Descripcion">
+                                        <rect key="frame" x="0.0" y="264" width="414" height="264"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-mP-zB7" userLabel="FotoCarta">
+                                        <rect key="frame" x="0.0" y="528" width="414" height="264"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YbN-fz-AyY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YbN-fz-AyY" firstAttribute="trailing" secondItem="gYR-VV-qnR" secondAttribute="trailing" id="A1B-Xb-CNZ"/>
+                            <constraint firstItem="YbN-fz-AyY" firstAttribute="bottom" secondItem="gYR-VV-qnR" secondAttribute="bottom" constant="8" id="ei2-q5-6TN"/>
+                            <constraint firstItem="gYR-VV-qnR" firstAttribute="leading" secondItem="YbN-fz-AyY" secondAttribute="leading" id="j4N-SF-ow1"/>
+                            <constraint firstItem="gYR-VV-qnR" firstAttribute="top" secondItem="YbN-fz-AyY" secondAttribute="top" constant="8" id="oai-MU-ddP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="15C-oN-b1Y"/>
+                    <connections>
+                        <outlet property="descr" destination="JN7-jL-VjQ" id="e3K-C7-94F"/>
+                        <outlet property="fotoCarta" destination="2cy-mP-zB7" id="mkB-D5-Phs"/>
+                        <outlet property="nombre" destination="9Dg-ta-XyS" id="E5R-Nc-1xV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBn-sl-1mF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
