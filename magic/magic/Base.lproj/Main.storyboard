@@ -121,20 +121,28 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gYR-VV-qnR">
                                 <rect key="frame" x="0.0" y="8" width="414" height="792"/>
                                 <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-bJ-TuQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                                        <items>
+                                            <navigationItem title="Title" id="9JN-FT-lUQ">
+                                                <barButtonItem key="backBarButtonItem" title="Atras" id="9O6-MO-3En"/>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dg-ta-XyS" userLabel="Nombre">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="264"/>
+                                        <rect key="frame" x="0.0" y="198" width="414" height="198"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JN7-jL-VjQ" userLabel="Descripcion">
-                                        <rect key="frame" x="0.0" y="264" width="414" height="264"/>
+                                        <rect key="frame" x="0.0" y="396" width="414" height="198"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-mP-zB7" userLabel="FotoCarta">
-                                        <rect key="frame" x="0.0" y="528" width="414" height="264"/>
+                                        <rect key="frame" x="0.0" y="594" width="414" height="198"/>
                                     </imageView>
                                 </subviews>
                             </stackView>

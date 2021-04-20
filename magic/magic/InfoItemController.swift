@@ -13,7 +13,11 @@ class InfoItemController: UIViewController {
     @IBOutlet var fotoCarta: UIImageView!
     @IBOutlet var descr: UILabel!
     
-    var carta: Carta!
+    var carta: Carta! {
+        didSet{
+            navigationItem.title = carta.name
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
