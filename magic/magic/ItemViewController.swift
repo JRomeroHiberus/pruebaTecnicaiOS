@@ -90,11 +90,25 @@ class ItemViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         switch segue.identifier {
         case "showCard":
             if let row = tableView.indexPathForSelectedRow?.row {
-                let card = itemData.almacenItems[row]
                 let infoItemController = segue.destination as! InfoItemController
+                let card = itemData.almacenItems[row]
+                cartaStore.fetchImage(for: card) {
+                    (fotoResult) in
+                    switch fotoResult{
+                    case let .success(foto):
+                        infoItemController.fotoCarta = UIImageView(image: foto)
+                    
+                    case let .failure(error):
+                        print("error haciendo el fetch 2 \(error)")
+                        
+                    }
+
+                }
+               
                 infoItemController.carta = card
             }
         default: preconditionFailure("Unexpected segue identifier")

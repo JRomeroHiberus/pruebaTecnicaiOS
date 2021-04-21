@@ -57,7 +57,7 @@ class CartaStore {
     
     
     
-    func fetchImagen(for carta: Carta, completion: @escaping (Result<UIImage, Error>) -> Void){
+    func fetchImage(for carta: Carta, completion: @escaping (Result<UIImage, Error>) -> Void){
         guard let cartaURL = carta.imageUrl else{
             completion(.failure(CartaError.URLfalta))
             return
@@ -67,7 +67,7 @@ class CartaStore {
         let task = session.dataTask(with: request) {
             (data, response, error) in
             
-            let result = self.procesaImagenRequest(data: data, error: error)
+            let result = self.processImageRequest(data: data, error: error)
             OperationQueue.main.addOperation {
                 completion(result)
             }
@@ -75,7 +75,7 @@ class CartaStore {
         task.resume()
     }
     
-    func procesaImagenRequest(data: Data?, error: Error?) -> Result<UIImage, Error> {
+    func processImageRequest(data: Data?, error: Error?) -> Result<UIImage, Error> {
         guard let imageData = data, let image = UIImage(data: imageData) else{
             if data == nil {
                 return .failure(error!)

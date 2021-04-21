@@ -13,6 +13,7 @@ class InfoItemController: UIViewController {
     @IBOutlet var fotoCarta: UIImageView!
     @IBOutlet var descr: UILabel!
     
+    
     var carta: Carta! {
         didSet{
             navigationItem.title = carta.name
@@ -24,8 +25,8 @@ class InfoItemController: UIViewController {
         
         nombre.text = carta.name
         descr.text = carta.descr
+         
     }
-    
     
 
 }
