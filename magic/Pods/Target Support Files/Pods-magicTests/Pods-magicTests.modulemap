@@ -1,0 +1,6 @@
+framework module Pods_magicTests {
+  umbrella header "Pods-magicTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

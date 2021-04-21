@@ -1,0 +1,6 @@
+framework module Pods_magic_magicUITests {
+  umbrella header "Pods-magic-magicUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
