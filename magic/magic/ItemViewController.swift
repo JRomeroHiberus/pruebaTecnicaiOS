@@ -10,6 +10,7 @@ import UIKit
 class ItemViewController: UITableViewController {
     var itemData : ItemData!
     var cartaStore: CartaStore!
+    //@IBOutlet var spinner : UIActivityIndicatorView!
     
     struct carta {
         var name = ""
@@ -72,7 +73,7 @@ class ItemViewController: UITableViewController {
                 }
                 self.refresh()
             case let .failure(error):
-                print("error haciendo el fetch 1 \(error)")
+                print("error haciendo el fetch de la carta \(error)")
             }
         }
     
@@ -96,16 +97,18 @@ class ItemViewController: UITableViewController {
         case "showCard":
             if let row = tableView.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
+                
                 let card = itemData.almacenItems[row]
                 cartaStore.fetchImage(for: card) {
                     (fotoResult) in
                     switch fotoResult{
                     case let .success(foto):
+                        
                         infoItemController.fotoCarta.image = foto
                         print ("Imagen conseguida correctamente")
                     
                     case let .failure(error):
-                        print("error haciendo el fetch 2 \(error)")
+                        print("error haciendo el fetch de la imagen \(error)")
                         
                     }
 
@@ -116,4 +119,17 @@ class ItemViewController: UITableViewController {
         default: preconditionFailure("Unexpected segue identifier")
         }
     }
+    
+    /*func updateFoto(displaying image: UIImage? , infoItemController: InfoItemController){
+        if let imageToDisplay = image {
+            spinner.stopAnimating()
+            infoItemController.fotoCarta.image = imageToDisplay
+        } else {
+            //spinner.center = infoItemController.fotoCarta.center
+            spinner.startAnimating()
+            infoItemController.fotoCarta.image = nil
+        }
+    }*/
+    
+    
 }

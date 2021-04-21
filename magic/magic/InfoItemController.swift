@@ -15,6 +15,7 @@ class InfoItemController: UIViewController {
     
     
     
+    
     var carta: Carta! {
         didSet{
             navigationItem.title = carta.name
@@ -28,6 +29,8 @@ class InfoItemController: UIViewController {
         descr.text = carta.descr
          
     }
+    
+    
     
 
 }
