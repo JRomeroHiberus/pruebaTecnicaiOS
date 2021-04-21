@@ -35,6 +35,7 @@ class ItemViewController: UITableViewController {
         
         let item = itemData.almacenItems[indexPath.row]
         cell.TextoCell.text = item.name
+        cell.TextoCell.frame.size.width = 320
         
         return cell
     }

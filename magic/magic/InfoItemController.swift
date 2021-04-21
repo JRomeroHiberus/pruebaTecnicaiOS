@@ -14,6 +14,7 @@ class InfoItemController: UIViewController {
     @IBOutlet var descr: UILabel!
     
     
+    
     var carta: Carta! {
         didSet{
             navigationItem.title = carta.name
