@@ -10,7 +10,7 @@ import UIKit
 class ItemViewController: UITableViewController {
     var itemData : ItemData!
     var cartaStore: CartaStore!
-    //@IBOutlet var spinner : UIActivityIndicatorView!
+    //@IBOutlet var spinner : UIActivityIndicatorView! = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
     struct carta {
         var name = ""
@@ -97,13 +97,13 @@ class ItemViewController: UITableViewController {
         case "showCard":
             if let row = tableView.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
-                
+                infoItemController.view.addSubview(spinner)
                 let card = itemData.almacenItems[row]
                 cartaStore.fetchImage(for: card) {
                     (fotoResult) in
                     switch fotoResult{
                     case let .success(foto):
-                        
+                        //self.updateFoto(displaying: foto, infoItemController: infoItemController)
                         infoItemController.fotoCarta.image = foto
                         print ("Imagen conseguida correctamente")
                     
@@ -125,7 +125,7 @@ class ItemViewController: UITableViewController {
             spinner.stopAnimating()
             infoItemController.fotoCarta.image = imageToDisplay
         } else {
-            //spinner.center = infoItemController.fotoCarta.center
+            spinner.center = infoItemController.fotoCarta.center
             spinner.startAnimating()
             infoItemController.fotoCarta.image = nil
         }
