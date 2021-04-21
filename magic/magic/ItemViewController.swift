@@ -97,7 +97,7 @@ class ItemViewController: UITableViewController {
         case "showCard":
             if let row = tableView.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
-                infoItemController.view.addSubview(spinner)
+               // infoItemController.view.addSubview(spinner)
                 let card = itemData.almacenItems[row]
                 cartaStore.fetchImage(for: card) {
                     (fotoResult) in
