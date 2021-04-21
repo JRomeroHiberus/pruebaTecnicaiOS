@@ -100,7 +100,8 @@ class ItemViewController: UITableViewController {
                     (fotoResult) in
                     switch fotoResult{
                     case let .success(foto):
-                        infoItemController.fotoCarta = UIImageView(image: foto)
+                        infoItemController.fotoCarta.image = foto
+                        print ("Imagen conseguida correctamente")
                     
                     case let .failure(error):
                         print("error haciendo el fetch 2 \(error)")
