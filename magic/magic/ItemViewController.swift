@@ -25,7 +25,7 @@ class ItemViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
         //print (" Hay \(itemData.almacenItems.count) cartas en itemData")
-            print("ahora muestro")
+           
              return itemData.almacenItems.count
             
 
@@ -68,7 +68,7 @@ class ItemViewController: UITableViewController {
                 print("fetch correcto: encontradas \(items.count) cartas")
                 for i in items {
                     self.itemData.addItem(item: i)
-                    print("Ahora almaceno")
+                    
                    // print (" Hay \(self.itemData.almacenItems.count) cartas en itemData")
                 }
                 self.refresh()
@@ -84,7 +84,7 @@ class ItemViewController: UITableViewController {
         DispatchQueue.main.async(
             execute:
             {
-                print("Ejecuto refresh")
+                
                 self.tableView.reloadData()
             })
     }
