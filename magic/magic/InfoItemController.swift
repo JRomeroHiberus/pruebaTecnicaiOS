@@ -27,6 +27,8 @@ class InfoItemController: UIViewController {
         
         nombre.text = carta.name
         descr.text = carta.descr
+        let url = carta.imageUrl
+        fotoCarta.kf.setImage(with: url)
          
     }
     

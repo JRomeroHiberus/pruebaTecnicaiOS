@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ItemViewController: UITableViewController {
     var itemData : ItemData!
@@ -99,7 +100,8 @@ class ItemViewController: UITableViewController {
                 let infoItemController = segue.destination as! InfoItemController
                // infoItemController.view.addSubview(spinner)
                 let card = itemData.almacenItems[row]
-                cartaStore.fetchImage(for: card) {
+                //let url = card.imageUrl
+                /*cartaStore.fetchImage(for: card) {
                     (fotoResult) in
                     switch fotoResult{
                     case let .success(foto):
@@ -112,7 +114,9 @@ class ItemViewController: UITableViewController {
                         
                     }
 
-                }
+                }*/
+             
+               // infoItemController.fotoCarta.kf.setImage(with: url)
                
                 infoItemController.carta = card
             }

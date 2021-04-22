@@ -17,5 +17,6 @@ target 'magic' do
   end
 
 pod 'AFNetworking', '~> 3.0'
+pod 'Kingfisher', '~> 4.0'
 end
 
