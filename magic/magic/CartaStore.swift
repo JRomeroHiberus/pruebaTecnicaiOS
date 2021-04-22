@@ -21,7 +21,7 @@ class CartaStore {
     }()
     
     //func fetchCards(){
-    func fetchCards(completion: @escaping (Result<[Carta] , Error>) -> Void){
+    /*func fetchCards(completion: @escaping (Result<[Carta] , Error>) -> Void){
         let url = MagicAPI.fullURL
         let request = URLRequest(url:url)
         let task = session.dataTask(with: url){
@@ -53,7 +53,7 @@ class CartaStore {
         }
         
         return MagicAPI.cards(fromJSON: jsonData)
-    }
+    }*/
     
     
     

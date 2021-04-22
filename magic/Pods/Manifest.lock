@@ -14,21 +14,31 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Alamofire (5.4.3)
   - Kingfisher (4.10.1)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Kingfisher (~> 4.0)
+  - Moya (~> 14.0)
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - Alamofire
     - Kingfisher
+    - Moya
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
 
-PODFILE CHECKSUM: 098bcf158171174c90a0cd9affac79134af6c294
+PODFILE CHECKSUM: 02544ba1772229b8fe033bc561ecc1dd22fc7ecc
 
 COCOAPODS: 1.10.1

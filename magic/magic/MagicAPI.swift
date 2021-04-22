@@ -7,11 +7,15 @@
 
 import Foundation
 import UIKit
+import Moya
 
 
-struct MagicAPI{
-    private static let URLcartas = "https://api.magicthegathering.io/v1/cards"
+//struct MagicAPI : TargetType{
+enum MagicAPI : TargetType{
+    case cards
     
+   /* private static let URLcartas = "https://api.magicthegathering.io/v1/cards"
+    var provider = MoyaProvider<<#Target: TargetType#>>(plugins: [NetworkLoggerPlugin()])
     static var fullURL: URL{
         return  MagicURL()
     }
@@ -37,7 +41,7 @@ struct MagicAPI{
         let imageUrl:UIImage
     }*/
     
-    
+  */
     static func cards(fromJSON data : Data) -> Result<[Carta] , Error> {
         do{
             let decoder = JSONDecoder()
@@ -48,4 +52,40 @@ struct MagicAPI{
             return .failure(error)
         }
     }
+    struct MagicResponse: Codable{
+        let cards: [Carta]
+        
+    }
+    public var baseURL: URL {
+        return URL(string:"https://api.magicthegathering.io/v1/")!
+    }
+    
+    
+    public var path: String {
+        switch self {
+        case .cards: return "/cards"
+        }
+    }
+    
+    public var method: Moya.Method {
+        return .get
+    }
+    
+    public var sampleData: Data {
+        return Data()
+    }
+    
+    public var task: Task {
+        switch self{
+        case .cards:
+            return .requestPlain
+            
+        }
+        
+    }
+    
+    public var headers: [String: String]? {
+        return ["Content-Type": "application/json"]
+      }
+    
 }

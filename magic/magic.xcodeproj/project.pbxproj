@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,7 +55,7 @@
 		DE63105F5A6C08247AD9330A /* Pods-magic-magicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magic-magicUITests.debug.xcconfig"; path = "Target Support Files/Pods-magic-magicUITests/Pods-magic-magicUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA0752CCB868593D41587088 /* Pods_magic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_magic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF40D5F7238A601F8B6F87D3 /* Pods-magicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magicTests.release.xcconfig"; path = "Target Support Files/Pods-magicTests/Pods-magicTests.release.xcconfig"; sourceTree = "<group>"; };
-		F25487C12630442D00B1FBB3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		F25487C12630442D00B1FBB3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F2C0FD05262D587D00D86C34 /* magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = magic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C0FD08262D587D00D86C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +127,6 @@
 				1E6F4419B320A37F4C056311 /* Pods-magicTests.debug.xcconfig */,
 				EF40D5F7238A601F8B6F87D3 /* Pods-magicTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

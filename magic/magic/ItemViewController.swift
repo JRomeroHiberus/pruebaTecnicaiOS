@@ -7,10 +7,14 @@
 
 import UIKit
 import Kingfisher
+import Moya
 
 class ItemViewController: UITableViewController {
     var itemData : ItemData!
     var cartaStore: CartaStore!
+    //var repos = NSArray()
+    let provider = MoyaProvider<MagicAPI>()
+    let jsonDecoder = JSONDecoder()
     //@IBOutlet var spinner : UIActivityIndicatorView! = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
     struct carta {
@@ -54,7 +58,7 @@ class ItemViewController: UITableViewController {
         
         
         itemData = ItemData()
-        cartaStore = CartaStore()
+       // cartaStore = CartaStore()
        /* for _ in 0...5 {
             itemData.crearItem()
         }
@@ -62,7 +66,7 @@ class ItemViewController: UITableViewController {
             print(itemData.almacenItems[i])
         }*/
         //cartaStore.fetchCards()
-        cartaStore.fetchCards{
+        /*cartaStore.fetchCards{
             (cardsResult) in
             switch cardsResult{
             case let .success(items):
@@ -76,9 +80,27 @@ class ItemViewController: UITableViewController {
             case let .failure(error):
                 print("error haciendo el fetch de la carta \(error)")
             }
+        }*/
+        provider.request(.cards){ result in
+            
+            switch result {
+            case .success(let response):
+                do{
+                  
+                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from:response.data)
+                    let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+                    for i in cards {
+                        self.itemData.addItem(item: i)
+                    }
+                    self.refresh()
+                } catch{
+                    print(error)
+                }
+            case .failure:
+                print("error")
+            }
+            
         }
-    
-        
     }
     
     func refresh(){
