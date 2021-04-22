@@ -9,12 +9,20 @@ import UIKit
 import Kingfisher
 import Moya
 
-class ItemViewController: UITableViewController {
+class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefetching {
+/*    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: <#T##(IndexPath) throws -> Bool#>){
+            
+        }
+    }*/
+    
     var itemData : ItemData!
     var cartaStore: CartaStore!
     //var repos = NSArray()
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
+    var currentPage = 1
+    var totalCards = 0
     //@IBOutlet var spinner : UIActivityIndicatorView! = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
     struct carta {
@@ -54,7 +62,7 @@ class ItemViewController: UITableViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 65
-        
+        //tableView.prefetchDataSource = self
         
         
         itemData = ItemData()
@@ -91,6 +99,14 @@ class ItemViewController: UITableViewController {
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
                     for i in cards {
                         self.itemData.addItem(item: i)
+                    }
+                    self.currentPage += 1
+                    if self.currentPage > 1{
+                        let indexPathsToReload = self.calculateIndexPathsToReload(from: cards)
+                       // tableView.delegate?.onFetchCompleted(with: indexPathsToReload)
+                    }
+                    else{
+                        //tableView.delegate?.onFetchCompleted(with: .none)
                     }
                     self.refresh()
                 } catch{
@@ -156,6 +172,9 @@ class ItemViewController: UITableViewController {
             infoItemController.fotoCarta.image = nil
         }
     }*/
-    
-    
+    private func calculateIndexPathsToReload(from newCards: [Carta]) -> [IndexPath] {
+      let startIndex = itemData.almacenItems.count - newCards.count
+      let endIndex = startIndex + newCards.count
+      return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    }
 }
