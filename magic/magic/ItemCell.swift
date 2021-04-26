@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemCell: UITableViewCell{
+class ItemCell: UITableViewCell {
     @IBOutlet var cellLabel: UILabel!
     
 }

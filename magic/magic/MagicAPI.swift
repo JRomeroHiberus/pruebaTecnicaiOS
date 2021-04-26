@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 import Moya
 
-
-//struct MagicAPI : TargetType{
-enum MagicAPI : TargetType{
+// struct MagicAPI : TargetType{
+enum MagicAPI: TargetType {
     case cards
     
    /* private static let URLcartas = "https://api.magicthegathering.io/v1/cards"
@@ -42,24 +41,23 @@ enum MagicAPI : TargetType{
     }*/
     
   */
-    static func cards(fromJSON data : Data) -> Result<[Card] , Error> {
-        do{
+    static func cards(fromJSON data: Data) -> Result<[Card], Error> {
+        do {
             let decoder = JSONDecoder()
-            let magicResponse = try decoder.decode(MagicResponse.self, from:data)
+            let magicResponse = try decoder.decode(MagicResponse.self, from: data)
             let cards = magicResponse.cards.filter { $0.imageUrl != nil }
             return .success(cards)
-        } catch{
+        } catch {
             return .failure(error)
         }
     }
-    struct MagicResponse: Codable{
+    struct MagicResponse: Codable {
         let cards: [Card]
         
     }
     public var baseURL: URL {
-        return URL(string:"https://api.magicthegathering.io/v1/")!
+        return URL(string: "https://api.magicthegathering.io/v1/")!
     }
-    
     
     public var path: String {
         switch self {
@@ -76,7 +74,7 @@ enum MagicAPI : TargetType{
     }
     
     public var task: Task {
-        switch self{
+        switch self {
         case .cards:
             return .requestPlain
             

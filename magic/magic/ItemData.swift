@@ -6,14 +6,12 @@
 //
 
 import UIKit
-class ItemData{
+class ItemData {
     var itemStorage = [Card]()
     
-    func addItem(item:Card){
-       
+    func addItem(item: Card) {
         
         itemStorage.append(item)
     }
-    
     
 }

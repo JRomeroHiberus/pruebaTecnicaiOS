@@ -13,11 +13,8 @@ class InfoItemController: UIViewController {
     @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
     
-    
-    
-    
     var card: Card! {
-        didSet{
+        didSet {
             navigationItem.title = card.name
         }
     }
@@ -31,8 +28,5 @@ class InfoItemController: UIViewController {
         cardPhoto.kf.setImage(with: url)
          
     }
-    
-    
-    
 
 }

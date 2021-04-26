@@ -17,8 +17,8 @@
 		F2C0FD10262D587D00D86C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C0FD0E262D587D00D86C34 /* Main.storyboard */; };
 		F2C0FD12262D587E00D86C34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C0FD11262D587E00D86C34 /* Assets.xcassets */; };
 		F2C0FD15262D587E00D86C34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C0FD13262D587E00D86C34 /* LaunchScreen.storyboard */; };
-		F2C0FD20262D587E00D86C34 /* magicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD1F262D587E00D86C34 /* magicTests.swift */; };
-		F2C0FD2B262D587E00D86C34 /* magicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD2A262D587E00D86C34 /* magicUITests.swift */; };
+		F2C0FD20262D587E00D86C34 /* MagicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD1F262D587E00D86C34 /* MagicTests.swift */; };
+		F2C0FD2B262D587E00D86C34 /* MagicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD2A262D587E00D86C34 /* MagicUITests.swift */; };
 		F2C0FD4B262D6C4200D86C34 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */; };
 		F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E793E0262EF56B0046DF68 /* InfoItemController.swift */; };
 		F2FDA8BF262D762E00CBACA6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8BE262D762E00CBACA6 /* Card.swift */; };
@@ -65,10 +65,10 @@
 		F2C0FD14262D587E00D86C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2C0FD16262D587E00D86C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C0FD1B262D587E00D86C34 /* magicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = magicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2C0FD1F262D587E00D86C34 /* magicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magicTests.swift; sourceTree = "<group>"; };
+		F2C0FD1F262D587E00D86C34 /* MagicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTests.swift; sourceTree = "<group>"; };
 		F2C0FD21262D587E00D86C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C0FD26262D587E00D86C34 /* magicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = magicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2C0FD2A262D587E00D86C34 /* magicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magicUITests.swift; sourceTree = "<group>"; };
+		F2C0FD2A262D587E00D86C34 /* MagicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicUITests.swift; sourceTree = "<group>"; };
 		F2C0FD2C262D587E00D86C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		F2E793E0262EF56B0046DF68 /* InfoItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemController.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		F2C0FD1E262D587E00D86C34 /* magicTests */ = {
 			isa = PBXGroup;
 			children = (
-				F2C0FD1F262D587E00D86C34 /* magicTests.swift */,
+				F2C0FD1F262D587E00D86C34 /* MagicTests.swift */,
 				F2C0FD21262D587E00D86C34 /* Info.plist */,
 			);
 			path = magicTests;
@@ -186,7 +186,7 @@
 		F2C0FD29262D587E00D86C34 /* magicUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F2C0FD2A262D587E00D86C34 /* magicUITests.swift */,
+				F2C0FD2A262D587E00D86C34 /* MagicUITests.swift */,
 				F2C0FD2C262D587E00D86C34 /* Info.plist */,
 			);
 			path = magicUITests;
@@ -204,6 +204,7 @@
 				F2C0FD02262D587D00D86C34 /* Frameworks */,
 				F2C0FD03262D587D00D86C34 /* Resources */,
 				A07D1F2F60D52F3981FC103C /* [CP] Embed Pods Frameworks */,
+				F2E9A02D2636E1FD008634CC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -402,6 +403,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-magic/Pods-magic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F2E9A02D2636E1FD008634CC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n    swiftlint autocorrect && swiftlint\nelse\n    echo \"warning: swiftLint not installed\"\nfi\n";
+		};
 		F74F5EC16D6558D9B1D400CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2C0FD20262D587E00D86C34 /* magicTests.swift in Sources */,
+				F2C0FD20262D587E00D86C34 /* MagicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2C0FD2B262D587E00D86C34 /* magicUITests.swift in Sources */,
+				F2C0FD2B262D587E00D86C34 /* MagicUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

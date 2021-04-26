@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import Moya
 
-class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDelegate { //UITableViewController{//}, UITableViewDataSourcePrefetching {
+class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { // UITableViewController{//}, UITableViewDataSourcePrefetching {
     /*func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell){
             fetchCards()
@@ -29,35 +29,33 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
     }*/
     
     @IBOutlet var tableV: UITableView!
-    var itemData : ItemData!
+    var itemData: ItemData!
     var cartaStore: CardStore!
-    //var repos = NSArray()
+    // var repos = NSArray()
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var totalCards = 0
-    //@IBOutlet var spinner : UIActivityIndicatorView! = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+    // @IBOutlet var spinner : UIActivityIndicatorView! = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
-    struct card {
+    struct Card {
         var name = ""
         var originalText = ""
         
-        init(name: String, descr:String){
+        init(name: String, descr: String) {
             self.name = name
             self.originalText = descr
         }
     }
     
-    
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
-        //print (" Hay \(itemData.almacenItems.count) cartas en itemData")
-        //print("Hay : \()")
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // print (" Hay \(itemData.almacenItems.count) cartas en itemData")
+        // print("Hay : \()")
              return itemData.itemStorage.count
-            
 
     }
     
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         let item = itemData.itemStorage[indexPath.row]
@@ -65,11 +63,8 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
         cell.cellLabel.frame.size.width = 320
         cell.cellLabel.text = item.name
         
-        
         return cell
     }
-    
-  
     
     override func viewDidLoad() {
         
@@ -83,16 +78,14 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
         */
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
         
-        
         itemData = ItemData()
         fetchCards()
         
     }
     
-    func refresh(){
+    func refresh() {
         DispatchQueue.main.async(
-            execute:
-            {
+            execute: {
                 
                 self.tableV.reloadData()
             })
@@ -109,9 +102,6 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
       let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
       tableView.reloadRows(at: indexPathsToReload, with: .automatic)
     }*/
-
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -121,7 +111,7 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
                 let infoItemController = segue.destination as! InfoItemController
                // infoItemController.view.addSubview(spinner)
                 let card = itemData.itemStorage[row]
-                //let url = card.imageUrl
+                // let url = card.imageUrl
                 /*cartaStore.fetchImage(for: card) {
                     (fotoResult) in
                     switch fotoResult{
@@ -161,17 +151,17 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
     
-    func fetchCards(){
-        provider.request(.cards){ result in
+    func fetchCards() {
+        provider.request(.cards) { result in
             
             switch result {
             case .success(let response):
-                do{
+                do {
                   
-                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from:response.data)
+                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-                    for i in cards {
-                        self.itemData.addItem(item: i)
+                    for card in cards {
+                        self.itemData.addItem(item: card)
                     }
                    /* self.totalCards = cards.count
                     self.currentPage += 1
@@ -183,7 +173,7 @@ class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDel
                         self.onFetchCompleted(with: .none)
                     }*/
                     self.refresh()
-                } catch{
+                } catch {
                     print(error)
                 }
             case .failure:
