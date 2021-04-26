@@ -7,8 +7,8 @@
 
 import UIKit
 
-class Carta: Equatable, Codable{
-    static func == (lhs: Carta, rhs: Carta) -> Bool {
+class Card: Equatable, Codable{
+    static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.name == rhs.name
     }
     

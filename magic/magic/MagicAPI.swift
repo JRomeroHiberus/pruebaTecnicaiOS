@@ -42,7 +42,7 @@ enum MagicAPI : TargetType{
     }*/
     
   */
-    static func cards(fromJSON data : Data) -> Result<[Carta] , Error> {
+    static func cards(fromJSON data : Data) -> Result<[Card] , Error> {
         do{
             let decoder = JSONDecoder()
             let magicResponse = try decoder.decode(MagicResponse.self, from:data)
@@ -53,7 +53,7 @@ enum MagicAPI : TargetType{
         }
     }
     struct MagicResponse: Codable{
-        let cards: [Carta]
+        let cards: [Card]
         
     }
     public var baseURL: URL {

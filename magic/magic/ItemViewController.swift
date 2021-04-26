@@ -9,15 +9,28 @@ import UIKit
 import Kingfisher
 import Moya
 
-class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefetching {
-/*    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if indexPaths.contains(where: <#T##(IndexPath) throws -> Bool#>){
-            
+class ItemViewController:UIViewController, UITableViewDataSource, UITableViewDelegate { //UITableViewController{//}, UITableViewDataSourcePrefetching {
+    /*func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell){
+            fetchCards()
         }
+    }
+    
+
+     func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= self.totalCards
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
+        
     }*/
     
+    @IBOutlet var tableV: UITableView!
     var itemData : ItemData!
-    var cartaStore: CartaStore!
+    var cartaStore: CardStore!
     //var repos = NSArray()
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
@@ -25,7 +38,7 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
     var totalCards = 0
     //@IBOutlet var spinner : UIActivityIndicatorView! = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
-    struct carta {
+    struct card {
         var name = ""
         var originalText = ""
         
@@ -36,20 +49,22 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
         //print (" Hay \(itemData.almacenItems.count) cartas en itemData")
-           
-             return itemData.almacenItems.count
+        //print("Hay : \()")
+             return itemData.itemStorage.count
             
 
     }
     
-    override func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView:UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
-        let item = itemData.almacenItems[indexPath.row]
-        cell.TextoCell.text = item.name
-        cell.TextoCell.frame.size.width = 320
+        let item = itemData.itemStorage[indexPath.row]
+        
+        cell.cellLabel.frame.size.width = 320
+        cell.cellLabel.text = item.name
+        
         
         return cell
     }
@@ -59,64 +74,19 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 65
-        //tableView.prefetchDataSource = self
+        tableV.dataSource = self
+        tableV.delegate = self
+        tableV.rowHeight = UITableView.automaticDimension
+        tableV.estimatedRowHeight = 65
+        /*let textLabel = UINib(nibName: "ItemCell", bundle: nil)
+        tableV.register(textLabel, forCellReuseIdentifier: "itemCell")
+        */
+        tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
         
         
         itemData = ItemData()
-       // cartaStore = CartaStore()
-       /* for _ in 0...5 {
-            itemData.crearItem()
-        }
-        for i in 0...5 {
-            print(itemData.almacenItems[i])
-        }*/
-        //cartaStore.fetchCards()
-        /*cartaStore.fetchCards{
-            (cardsResult) in
-            switch cardsResult{
-            case let .success(items):
-                print("fetch correcto: encontradas \(items.count) cartas")
-                for i in items {
-                    self.itemData.addItem(item: i)
-                    
-                   // print (" Hay \(self.itemData.almacenItems.count) cartas en itemData")
-                }
-                self.refresh()
-            case let .failure(error):
-                print("error haciendo el fetch de la carta \(error)")
-            }
-        }*/
-        provider.request(.cards){ result in
-            
-            switch result {
-            case .success(let response):
-                do{
-                  
-                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from:response.data)
-                    let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-                    for i in cards {
-                        self.itemData.addItem(item: i)
-                    }
-                    self.currentPage += 1
-                    if self.currentPage > 1{
-                        let indexPathsToReload = self.calculateIndexPathsToReload(from: cards)
-                       // tableView.delegate?.onFetchCompleted(with: indexPathsToReload)
-                    }
-                    else{
-                        //tableView.delegate?.onFetchCompleted(with: .none)
-                    }
-                    self.refresh()
-                } catch{
-                    print(error)
-                }
-            case .failure:
-                print("error")
-            }
-            
-        }
+        fetchCards()
+        
     }
     
     func refresh(){
@@ -124,9 +94,22 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
             execute:
             {
                 
-                self.tableView.reloadData()
+                self.tableV.reloadData()
             })
     }
+    
+   /* func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+      
+        guard let newIndexPathsToReload = newIndexPathsToReload else {
+        tableView.isHidden = false
+        tableView.reloadData()
+        return
+      }
+     
+      let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+      tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+    }*/
+
     
     
     
@@ -134,10 +117,10 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
         
         switch segue.identifier {
         case "showCard":
-            if let row = tableView.indexPathForSelectedRow?.row {
+            if let row = tableV.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
                // infoItemController.view.addSubview(spinner)
-                let card = itemData.almacenItems[row]
+                let card = itemData.itemStorage[row]
                 //let url = card.imageUrl
                 /*cartaStore.fetchImage(for: card) {
                     (fotoResult) in
@@ -156,7 +139,7 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
              
                // infoItemController.fotoCarta.kf.setImage(with: url)
                
-                infoItemController.carta = card
+                infoItemController.card = card
             }
         default: preconditionFailure("Unexpected segue identifier")
         }
@@ -172,9 +155,42 @@ class ItemViewController: UITableViewController{//}, UITableViewDataSourcePrefet
             infoItemController.fotoCarta.image = nil
         }
     }*/
-    private func calculateIndexPathsToReload(from newCards: [Carta]) -> [IndexPath] {
-      let startIndex = itemData.almacenItems.count - newCards.count
+    private func calculateIndexPathsToReload(from newCards: [Card]) -> [IndexPath] {
+      let startIndex = itemData.itemStorage.count - newCards.count
       let endIndex = startIndex + newCards.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    }
+    
+    func fetchCards(){
+        provider.request(.cards){ result in
+            
+            switch result {
+            case .success(let response):
+                do{
+                  
+                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from:response.data)
+                    let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+                    for i in cards {
+                        self.itemData.addItem(item: i)
+                    }
+                   /* self.totalCards = cards.count
+                    self.currentPage += 1
+                    if self.currentPage > 1{
+                        let indexPathsToReload = self.calculateIndexPathsToReload(from: cards)
+                        self.onFetchCompleted(with: indexPathsToReload)
+                    }
+                    else{
+                        self.onFetchCompleted(with: .none)
+                    }*/
+                    self.refresh()
+                } catch{
+                    print(error)
+                }
+            case .failure:
+                print("error")
+            }
+            
+        }
+        
     }
 }

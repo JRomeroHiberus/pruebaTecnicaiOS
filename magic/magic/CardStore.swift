@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CartaStore {
+class CardStore {
     
-    enum CartaError: Error {
-        case creacionImagenError
-        case URLfalta
+    enum CardError: Error {
+        case imageCreationError
+        case missingURL
     }
     
     
@@ -57,13 +57,13 @@ class CartaStore {
     
     
     
-    func fetchImage(for carta: Carta, completion: @escaping (Result<UIImage, Error>) -> Void){
-        guard let cartaURL = carta.imageUrl else{
-            completion(.failure(CartaError.URLfalta))
+    func fetchImage(for card: Card, completion: @escaping (Result<UIImage, Error>) -> Void){
+        guard let cardURL = card.imageUrl else{
+            completion(.failure(CardError.missingURL))
             return
         }
       
-        let request = URLRequest(url: cartaURL)
+        let request = URLRequest(url: cardURL)
         let task = session.dataTask(with: request) {
             (data, response, error) in
             
@@ -80,7 +80,7 @@ class CartaStore {
             if data == nil {
                 return .failure(error!)
             } else{
-                return .failure(CartaError.creacionImagenError)
+                return .failure(CardError.imageCreationError)
             }
         }
         

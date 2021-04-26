@@ -7,9 +7,9 @@
 
 import UIKit
 
-class VistaPresentacion: UIViewController {
+class PresentationView: UIViewController {
 
-    @IBOutlet var botonContinuar: UIButton!
+    @IBOutlet var continueButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

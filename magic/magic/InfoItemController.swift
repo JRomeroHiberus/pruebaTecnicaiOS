@@ -9,26 +9,26 @@ import UIKit
 
 class InfoItemController: UIViewController {
     
-    @IBOutlet var nombre: UILabel!
-    @IBOutlet var fotoCarta: UIImageView!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
     
     
     
     
-    var carta: Carta! {
+    var card: Card! {
         didSet{
-            navigationItem.title = carta.name
+            navigationItem.title = card.name
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        nombre.text = carta.name
-        descr.text = carta.descr
-        let url = carta.imageUrl
-        fotoCarta.kf.setImage(with: url)
+        name.text = card.name
+        descr.text = card.descr
+        let url = card.imageUrl
+        cardPhoto.kf.setImage(with: url)
          
     }
     

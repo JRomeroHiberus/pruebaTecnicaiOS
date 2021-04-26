@@ -8,5 +8,6 @@
 import UIKit
 
 class ItemCell: UITableViewCell{
-    @IBOutlet var TextoCell :UILabel!
+    @IBOutlet var cellLabel: UILabel!
+    
 }
