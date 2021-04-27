@@ -6,14 +6,12 @@
 //
 
 import UIKit
-class ItemData{
-    var almacenItems = [Carta]()
+class ItemData {
+    var itemStorage = [Card]()
     
-    func addItem(item:Carta){
-       
+    func addItem(item: Card) {
         
-        almacenItems.append(item)
+        itemStorage.append(item)
     }
-    
     
 }

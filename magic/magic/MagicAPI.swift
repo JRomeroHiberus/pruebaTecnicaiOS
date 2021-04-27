@@ -9,57 +9,27 @@ import Foundation
 import UIKit
 import Moya
 
-
-//struct MagicAPI : TargetType{
-enum MagicAPI : TargetType{
-    case cards
+enum MagicAPI: TargetType {
+    case cards(page: Int)
     
-   /* private static let URLcartas = "https://api.magicthegathering.io/v1/cards"
-    var provider = MoyaProvider<<#Target: TargetType#>>(plugins: [NetworkLoggerPlugin()])
-    static var fullURL: URL{
-        return  MagicURL()
-    }
-    
-    
-    private static func MagicURL() -> URL{
-        var componentes = URLComponents(string: URLcartas)!
-        let queryItems = [URLQueryItem]()
-        componentes.queryItems = queryItems
-        
-        //return URL(string: URLcartas)!
-        return componentes.url!
-    }
-    
-    
-    struct MagicResponse: Codable{
-        let cards: [Carta]
-        
-    }
-    
-    
-/*    struct MagicCardImage: Codable{
-        let imageUrl:UIImage
-    }*/
-    
-  */
-    static func cards(fromJSON data : Data) -> Result<[Carta] , Error> {
-        do{
+    static func cards(fromJSON data: Data) -> Result<[Card], Error> {
+        do {
             let decoder = JSONDecoder()
-            let magicResponse = try decoder.decode(MagicResponse.self, from:data)
+            let magicResponse = try decoder.decode(MagicResponse.self, from: data)
             let cards = magicResponse.cards.filter { $0.imageUrl != nil }
             return .success(cards)
-        } catch{
+        } catch {
             return .failure(error)
         }
     }
-    struct MagicResponse: Codable{
-        let cards: [Carta]
+    struct MagicResponse: Codable {
+        let cards: [Card]
         
     }
-    public var baseURL: URL {
-        return URL(string:"https://api.magicthegathering.io/v1/")!
-    }
     
+    public var baseURL: URL {
+        return URL(string: "https://api.magicthegathering.io/v1/")!
+    }
     
     public var path: String {
         switch self {
@@ -76,10 +46,13 @@ enum MagicAPI : TargetType{
     }
     
     public var task: Task {
-        switch self{
-        case .cards:
-            return .requestPlain
-            
+        switch self {
+        case let .cards(page):
+            return .requestParameters(
+                parameters: [
+                    "page": "\(page)"
+                ], encoding: URLEncoding.default
+            )
         }
         
     }
