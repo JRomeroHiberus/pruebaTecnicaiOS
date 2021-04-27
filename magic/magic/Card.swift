@@ -15,8 +15,6 @@ class Card: Equatable, Codable {
     var name: String
     var descr: String
     var imageUrl: URL?
-   // let remoteURL: URL?
-    // var image: UIImage
     
     init(name: String, descr: String, url: URL?) {
         self.name = name
@@ -28,6 +26,5 @@ class Card: Equatable, Codable {
         case name
         case descr = "type"
         case imageUrl
-        // case image = "imageUrl"
     }
 }
