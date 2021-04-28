@@ -98,3 +98,7 @@ iOSInjectionProject/
 *.xcbkptlist
 *.xcbkptlist
 *.xcuserstate
+*.xcuserstate
+*.xcbkptlist
+*.pbxproj
+.DS_Store

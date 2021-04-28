@@ -9,15 +9,17 @@ import UIKit
 import Kingfisher
 import Moya
 
-class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
     
     @IBOutlet var tableV: UITableView!
     var itemData: ItemData!
+    var items: [String] = []
     var cartaStore: CardStore!
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
+    var presenter: Presenter?
     
     struct Card {
         var name = ""
@@ -120,5 +122,10 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         
+    }
+    
+    func setlListWithItems(items: [String]) {
+        self.items = items
+        refresh()
     }
 }
