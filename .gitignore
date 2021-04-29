@@ -102,3 +102,6 @@ iOSInjectionProject/
 *.xcbkptlist
 *.pbxproj
 .DS_Store
+.DS_Store
+*.xcbkptlist
+*.xcuserstate
