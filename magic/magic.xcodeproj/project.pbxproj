@@ -11,6 +11,11 @@
 		A253D24A974DE02D0FF22FA0 /* Pods_magicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43740D75556AEE5EF75F080F /* Pods_magicTests.framework */; };
 		A2E956C18EAB74D5B4711EBE /* Pods_magic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0752CCB868593D41587088 /* Pods_magic.framework */; };
 		F25487C22630442D00B1FBB3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F25487C12630442D00B1FBB3 /* Podfile */; };
+		F27F9A68263A97DC007F08DF /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A67263A97DC007F08DF /* Entity.swift */; };
+		F27F9A70263A9808007F08DF /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6C263A9808007F08DF /* View.swift */; };
+		F27F9A71263A9808007F08DF /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6D263A9808007F08DF /* Presenter.swift */; };
+		F27F9A72263A9808007F08DF /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6E263A9808007F08DF /* Routing.swift */; };
+		F27F9A73263A9808007F08DF /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6F263A9808007F08DF /* Interactor.swift */; };
 		F2C0FD09262D587D00D86C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD08262D587D00D86C34 /* AppDelegate.swift */; };
 		F2C0FD0B262D587D00D86C34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */; };
 		F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD0C262D587D00D86C34 /* PresentationView.swift */; };
@@ -21,7 +26,6 @@
 		F2C0FD2B262D587E00D86C34 /* MagicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD2A262D587E00D86C34 /* MagicUITests.swift */; };
 		F2C0FD4B262D6C4200D86C34 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */; };
 		F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E793E0262EF56B0046DF68 /* InfoItemController.swift */; };
-		F2FDA8BF262D762E00CBACA6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8BE262D762E00CBACA6 /* Card.swift */; };
 		F2FDA8C7262D798D00CBACA6 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8C6262D798D00CBACA6 /* ItemData.swift */; };
 		F2FDA8CC262D7BD500CBACA6 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */; };
 		F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */; };
@@ -56,6 +60,11 @@
 		EA0752CCB868593D41587088 /* Pods_magic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_magic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF40D5F7238A601F8B6F87D3 /* Pods-magicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magicTests.release.xcconfig"; path = "Target Support Files/Pods-magicTests/Pods-magicTests.release.xcconfig"; sourceTree = "<group>"; };
 		F25487C12630442D00B1FBB3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F27F9A67263A97DC007F08DF /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F27F9A6C263A9808007F08DF /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		F27F9A6D263A9808007F08DF /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		F27F9A6E263A9808007F08DF /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		F27F9A6F263A9808007F08DF /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		F2C0FD05262D587D00D86C34 /* magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = magic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C0FD08262D587D00D86C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +81,6 @@
 		F2C0FD2C262D587E00D86C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		F2E793E0262EF56B0046DF68 /* InfoItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemController.swift; sourceTree = "<group>"; };
-		F2FDA8BE262D762E00CBACA6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F2FDA8C6262D798D00CBACA6 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicAPI.swift; sourceTree = "<group>"; };
@@ -156,6 +164,11 @@
 		F2C0FD07262D587D00D86C34 /* magic */ = {
 			isa = PBXGroup;
 			children = (
+				F27F9A6F263A9808007F08DF /* Interactor.swift */,
+				F27F9A6D263A9808007F08DF /* Presenter.swift */,
+				F27F9A6E263A9808007F08DF /* Routing.swift */,
+				F27F9A6C263A9808007F08DF /* View.swift */,
+				F27F9A67263A97DC007F08DF /* Entity.swift */,
 				F2C0FD08262D587D00D86C34 /* AppDelegate.swift */,
 				F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */,
 				F2C0FD0C262D587D00D86C34 /* PresentationView.swift */,
@@ -164,7 +177,6 @@
 				F2C0FD13262D587E00D86C34 /* LaunchScreen.storyboard */,
 				F2C0FD16262D587E00D86C34 /* Info.plist */,
 				F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */,
-				F2FDA8BE262D762E00CBACA6 /* Card.swift */,
 				F2FDA8C6262D798D00CBACA6 /* ItemData.swift */,
 				F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */,
 				F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */,
@@ -450,13 +462,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2FDA8CC262D7BD500CBACA6 /* ItemViewController.swift in Sources */,
-				F2FDA8BF262D762E00CBACA6 /* Card.swift in Sources */,
+				F27F9A72263A9808007F08DF /* Routing.swift in Sources */,
 				F2C0FD4B262D6C4200D86C34 /* ItemCell.swift in Sources */,
 				F2FDA8C7262D798D00CBACA6 /* ItemData.swift in Sources */,
 				F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */,
 				F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */,
 				F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */,
+				F27F9A68263A97DC007F08DF /* Entity.swift in Sources */,
+				F27F9A70263A9808007F08DF /* View.swift in Sources */,
 				F2FDA8DF262D99B300CBACA6 /* CardStore.swift in Sources */,
+				F27F9A71263A9808007F08DF /* Presenter.swift in Sources */,
+				F27F9A73263A9808007F08DF /* Interactor.swift in Sources */,
 				F2C0FD09262D587D00D86C34 /* AppDelegate.swift in Sources */,
 				F2C0FD0B262D587D00D86C34 /* SceneDelegate.swift in Sources */,
 			);
