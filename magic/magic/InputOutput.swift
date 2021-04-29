@@ -7,11 +7,10 @@
 
 import Foundation
 
-protocol InteractionProtocolInput{
-    func addNewCardWithData(name: String, descr:String, url:String)
+protocol InteractionProtocolInput {
+    func addNewCardWithData(name: String, descr: String, url: String)
 }
 
-
-protocol InteractionProtocolOutput{
+protocol InteractionProtocolOutput {
     func updateItems(items: [Card])
 }

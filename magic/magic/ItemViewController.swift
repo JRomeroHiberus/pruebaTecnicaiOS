@@ -12,8 +12,8 @@ import Moya
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
     
     @IBOutlet var tableV: UITableView!
-    var itemData: ItemData!
-    var items: [String] = []
+    // var itemData: ItemData!
+    var itemNames: [String] = []
     var cartaStore: CardStore!
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
@@ -32,25 +32,26 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-             return itemData.itemStorage.count
+        return itemNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
-        let item = itemData.itemStorage[indexPath.row]
+        // let item = itemData.itemStorage[indexPath.row]
+        let name = itemNames[indexPath.row]
         
         cell.cellLabel.frame.size.width = 320
-        cell.cellLabel.text = item.name
+        cell.cellLabel.text = name
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+   /* func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == itemData.itemStorage.count - 1 {
-            fetchCards()
+            presenter?.fetchCards()
         }
-    }
+    }*/
     
     override func viewDidLoad() {
         
@@ -60,8 +61,9 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
-        itemData = ItemData()
-        fetchCards()
+       // itemData = ItemData()
+        print("Voy a avisar a presenter")
+        presenter?.fetchCards()
         
     }
     
@@ -73,7 +75,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             })
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
         case "showCard":
@@ -90,9 +92,9 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
       let startIndex = itemData.itemStorage.count - newCards.count
       let endIndex = startIndex + newCards.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-    }
+    }*/
     
-    func fetchCards() {
+    /*func fetchCards() {
         guard !isFetchInProgress else {
             return
         }
@@ -122,10 +124,10 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         
-    }
+    }*/
     
-    func setlListWithItems(items: [String]) {
-        self.items = items
+    func setListWithItems(cardNames: [String]) {
+        self.itemNames = cardNames
         refresh()
     }
 }

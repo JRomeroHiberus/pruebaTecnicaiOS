@@ -8,20 +8,19 @@
 import Foundation
 import UIKit
 
-
 class Routing {
-    let vc:ItemViewController = ItemViewController()
+    let viewController: ItemViewController = ItemViewController()
     let presenter = Presenter()
     let interactor = Interactor()
     var navigationController: UINavigationController?
     
-    init(){
-        vc.presenter = presenter
-        presenter.view = vc
+    init() {
+        viewController.presenter = presenter
+        presenter.view = viewController
         presenter.interactor = interactor
         presenter.routing = self
         interactor.presenter = presenter
-        navigationController = UINavigationController(rootViewController: vc)
+        navigationController = UINavigationController(rootViewController: viewController)
         
     }
 }

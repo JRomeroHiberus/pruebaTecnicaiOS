@@ -7,5 +7,5 @@
 
 import Foundation
 protocol viewProtocol {
-    func setlListWithItems(items: [String])
+    func setListWithItems(cardNames: [String])
 }

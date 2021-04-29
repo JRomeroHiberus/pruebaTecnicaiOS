@@ -10,7 +10,8 @@ import UIKit
 import Moya
 
 enum MagicAPI: TargetType {
-    case cards(page: Int)
+    case pagination(page: Int)
+    case noPagination
     
     static func cards(fromJSON data: Data) -> Result<[Card], Error> {
         do {
@@ -33,7 +34,7 @@ enum MagicAPI: TargetType {
     
     public var path: String {
         switch self {
-        case .cards: return "/cards"
+        case .pagination, .noPagination: return "/cards"
         }
     }
     
@@ -47,12 +48,14 @@ enum MagicAPI: TargetType {
     
     public var task: Task {
         switch self {
-        case let .cards(page):
+        case let .pagination(page):
             return .requestParameters(
                 parameters: [
                     "page": "\(page)"
                 ], encoding: URLEncoding.default
             )
+        case .noPagination:
+            return .requestPlain
         }
         
     }
