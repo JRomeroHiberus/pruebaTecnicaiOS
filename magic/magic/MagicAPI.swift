@@ -50,7 +50,8 @@ enum MagicAPI: TargetType {
         case let .cards(page):
             return .requestParameters(
                 parameters: [
-                    "page": "\(page)"
+                    "page": "\(page)",
+                    "totalCount": 70
                 ], encoding: URLEncoding.default
             )
         }

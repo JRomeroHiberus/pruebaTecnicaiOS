@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import Moya
 
-class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     
     @IBOutlet var tableV: UITableView!
     var itemData: ItemData!
@@ -18,6 +18,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
+    var prefetchDataSource: UITableViewDataSourcePrefetching?
     
     struct Card {
         var name = ""
@@ -44,9 +45,17 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+   /* func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == itemData.itemStorage.count - 1 {
             fetchCards()
+        }
+    }*/
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for index in indexPaths where index.row == itemData.itemStorage.count - 6 {
+                fetchCards()
+                break
         }
     }
     
@@ -58,6 +67,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
+        tableV.prefetchDataSource = self
         itemData = ItemData()
         fetchCards()
         
