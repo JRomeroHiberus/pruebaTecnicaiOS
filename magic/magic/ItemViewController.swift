@@ -12,14 +12,14 @@ import Moya
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
     
     @IBOutlet var tableV: UITableView!
-    // var itemData: ItemData!
-    var itemNames: [String] = []
+    var itemData: ItemData = ItemData(cardStorage: [])
     var cartaStore: CardStore!
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
     var presenter: Presenter?
+    // var routing: Routing?
     
     struct Card {
         var name = ""
@@ -28,21 +28,24 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         init(name: String, descr: String) {
             self.name = name
             self.originalText = descr
+            
+           /* itemData = ItemData()
+            presenter = Presenter()*/
         }
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemNames.count
+        return itemData.itemStorage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         // let item = itemData.itemStorage[indexPath.row]
-        let name = itemNames[indexPath.row]
+        let item = itemData.itemStorage[indexPath.row]
         
         cell.cellLabel.frame.size.width = 320
-        cell.cellLabel.text = name
+        cell.cellLabel.text = item.name
         
         return cell
     }
@@ -61,9 +64,18 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
-       // itemData = ItemData()
+        
+        self.presenter = Presenter()
+        self.presenter?.view = self
+        self.presenter?.interactor = Interactor()
+        // presenter.routing = self
+        self.presenter?.interactor?.presenter = self.presenter
+        
+       // self.routing = Routing()
+      
         print("Voy a avisar a presenter")
         presenter?.fetchCards()
+        print("Ya he avisado")
         
     }
     
@@ -126,8 +138,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }*/
     
-    func setListWithItems(cardNames: [String]) {
-        self.itemNames = cardNames
+    func setListWithItems(cards: ItemData) {
+        self.itemData = cards
         refresh()
     }
 }

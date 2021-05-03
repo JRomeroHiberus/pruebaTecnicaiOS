@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-class Routing {
+class Routing {// }: PresenterToRouter {
+       
     let viewController: ItemViewController = ItemViewController()
     let presenter = Presenter()
     let interactor = Interactor()
-    var navigationController: UINavigationController?
+   // var navigationController: UINavigationController?
     
     init() {
         viewController.presenter = presenter
@@ -20,7 +21,7 @@ class Routing {
         presenter.interactor = interactor
         presenter.routing = self
         interactor.presenter = presenter
-        navigationController = UINavigationController(rootViewController: viewController)
+        // navigationController = UINavigationController(rootViewController: viewController)
         
     }
 }

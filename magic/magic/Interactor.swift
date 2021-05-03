@@ -14,10 +14,7 @@ class Interactor {
     var presenter: Presenter?
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
-    var itemData: ItemData!
-    init() {
-        itemData = ItemData()
-    }
+    var itemData: ItemData = ItemData(cardStorage: [])
     
     struct Card {
         var name = ""
@@ -66,12 +63,8 @@ class Interactor {
     }
     
     func sendResponseToPresenter() {
-        var namesArray: [String] = []
-        for card in itemData.itemStorage {
-            namesArray.append(card.name)
-        }
-        
-        presenter?.receiveFetchResponse(cardNames: namesArray)
+    
+        presenter?.receiveFetchResponse(cards: itemData)
     }
     
 }

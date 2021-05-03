@@ -10,21 +10,15 @@
 import Foundation
 class Presenter {
     var view: ItemViewController?
-    var interactor: Interactor?
+    var interactor: Interactor? 
     var routing: Routing?
-    
-    init() {}
-
-    func showCard() {
-        
-    }
     
     func fetchCards() {
         print("Presenter recibe peticion de fetch")
         interactor?.fetchCards()
     }
     
-    func receiveFetchResponse(cardNames: [String]) {
-        view!.setListWithItems(cardNames: cardNames)
+    func receiveFetchResponse(cards: ItemData) {
+        view?.setListWithItems(cards: cards)
     }
 }
