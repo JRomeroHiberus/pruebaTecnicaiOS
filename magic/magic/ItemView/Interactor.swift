@@ -41,6 +41,7 @@ class Interactor {
                 do {
                     /*self.currentPage += 1
                     self.isFetchInProgress = false*/
+                   // let data = saveJSON(jsonObject: response,filename:"model")
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
                     for card in cards {

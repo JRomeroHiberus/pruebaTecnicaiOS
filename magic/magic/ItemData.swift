@@ -10,7 +10,7 @@ class ItemData {
     var itemStorage = [Card]()
     
     init(cardStorage: [Card]) {
-        itemStorage=cardStorage
+        itemStorage = cardStorage
     }
     
     func addItem(item: Card) {

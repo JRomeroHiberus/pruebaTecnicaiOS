@@ -13,7 +13,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var tableV: UITableView!
     var itemData: ItemData = ItemData(cardStorage: [])
-    var cartaStore: CardStore!
+    var cartaStore: CardStore = CardStore()
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
@@ -29,8 +29,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.name = name
             self.originalText = descr
             
-           /* itemData = ItemData()
-            presenter = Presenter()*/
         }
     }
     
@@ -87,12 +85,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             })
     }
     
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
         case "showCard":
             if let row = tableV.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
+               // interactor.showCardRequest(index)
                 let card = itemData.itemStorage[row]
                 infoItemController.card = card
             }
@@ -100,7 +99,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    private func calculateIndexPathsToReload(from newCards: [Card]) -> [IndexPath] {
+   /* private func calculateIndexPathsToReload(from newCards: [Card]) -> [IndexPath] {
       let startIndex = itemData.itemStorage.count - newCards.count
       let endIndex = startIndex + newCards.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }

@@ -9,10 +9,4 @@ import Foundation
 
 import UIKit
 
-protocol InteractorInput {
-    func showCardsRequest()
-}
 
-protocol InteractorOutput {
-    func updateObject(itemData: ItemData)
-}
