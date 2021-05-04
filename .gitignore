@@ -98,3 +98,11 @@ iOSInjectionProject/
 *.xcbkptlist
 *.xcbkptlist
 *.xcuserstate
+*.xcuserstate
+*.xcbkptlist
+*.pbxproj
+.DS_Store
+.DS_Store
+*.xcbkptlist
+*.xcuserstate
+magic/magic.xcworkspace/xcuserdata/josemanuelromeroclaveria.xcuserdatad/UserInterfaceState.xcuserstate

@@ -10,7 +10,16 @@
 		0BB7F4C618CF391346598E3B /* Pods_magic_magicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CE65EA347794211D582B7C /* Pods_magic_magicUITests.framework */; };
 		A253D24A974DE02D0FF22FA0 /* Pods_magicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43740D75556AEE5EF75F080F /* Pods_magicTests.framework */; };
 		A2E956C18EAB74D5B4711EBE /* Pods_magic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0752CCB868593D41587088 /* Pods_magic.framework */; };
+		F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226B6CD26415C5D00F1AF42 /* Model.swift */; };
+		F230DBB6263C1E79009A1F2A /* JSONSaveLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */; };
 		F25487C22630442D00B1FBB3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F25487C12630442D00B1FBB3 /* Podfile */; };
+		F27A9643264009F10029C266 /* InfoItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9642264009F10029C266 /* InfoItemPresenter.swift */; };
+		F27A964826400A070029C266 /* InfoItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A964726400A070029C266 /* InfoItemInteractor.swift */; };
+		F27F9A68263A97DC007F08DF /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A67263A97DC007F08DF /* Entity.swift */; };
+		F27F9A70263A9808007F08DF /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6C263A9808007F08DF /* View.swift */; };
+		F27F9A71263A9808007F08DF /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6D263A9808007F08DF /* Presenter.swift */; };
+		F27F9A72263A9808007F08DF /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6E263A9808007F08DF /* Routing.swift */; };
+		F27F9A73263A9808007F08DF /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6F263A9808007F08DF /* Interactor.swift */; };
 		F2C0FD09262D587D00D86C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD08262D587D00D86C34 /* AppDelegate.swift */; };
 		F2C0FD0B262D587D00D86C34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */; };
 		F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD0C262D587D00D86C34 /* PresentationView.swift */; };
@@ -21,7 +30,6 @@
 		F2C0FD2B262D587E00D86C34 /* MagicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD2A262D587E00D86C34 /* MagicUITests.swift */; };
 		F2C0FD4B262D6C4200D86C34 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */; };
 		F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E793E0262EF56B0046DF68 /* InfoItemController.swift */; };
-		F2FDA8BF262D762E00CBACA6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8BE262D762E00CBACA6 /* Card.swift */; };
 		F2FDA8C7262D798D00CBACA6 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8C6262D798D00CBACA6 /* ItemData.swift */; };
 		F2FDA8CC262D7BD500CBACA6 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */; };
 		F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */; };
@@ -55,7 +63,16 @@
 		DE63105F5A6C08247AD9330A /* Pods-magic-magicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magic-magicUITests.debug.xcconfig"; path = "Target Support Files/Pods-magic-magicUITests/Pods-magic-magicUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA0752CCB868593D41587088 /* Pods_magic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_magic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF40D5F7238A601F8B6F87D3 /* Pods-magicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magicTests.release.xcconfig"; path = "Target Support Files/Pods-magicTests/Pods-magicTests.release.xcconfig"; sourceTree = "<group>"; };
+		F226B6CD26415C5D00F1AF42 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSaveLoad.swift; sourceTree = "<group>"; };
 		F25487C12630442D00B1FBB3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F27A9642264009F10029C266 /* InfoItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemPresenter.swift; sourceTree = "<group>"; };
+		F27A964726400A070029C266 /* InfoItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemInteractor.swift; sourceTree = "<group>"; };
+		F27F9A67263A97DC007F08DF /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F27F9A6C263A9808007F08DF /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		F27F9A6D263A9808007F08DF /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		F27F9A6E263A9808007F08DF /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		F27F9A6F263A9808007F08DF /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		F2C0FD05262D587D00D86C34 /* magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = magic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C0FD08262D587D00D86C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +89,6 @@
 		F2C0FD2C262D587E00D86C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		F2E793E0262EF56B0046DF68 /* InfoItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemController.swift; sourceTree = "<group>"; };
-		F2FDA8BE262D762E00CBACA6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F2FDA8C6262D798D00CBACA6 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicAPI.swift; sourceTree = "<group>"; };
@@ -130,6 +146,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F27A9640264009460029C266 /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */,
+				F27F9A6C263A9808007F08DF /* View.swift */,
+				F27F9A6D263A9808007F08DF /* Presenter.swift */,
+				F27F9A6F263A9808007F08DF /* Interactor.swift */,
+			);
+			path = ItemView;
+			sourceTree = "<group>";
+		};
+		F27A9641264009710029C266 /* InfoItem */ = {
+			isa = PBXGroup;
+			children = (
+				F2E793E0262EF56B0046DF68 /* InfoItemController.swift */,
+				F27A9642264009F10029C266 /* InfoItemPresenter.swift */,
+				F27A964726400A070029C266 /* InfoItemInteractor.swift */,
+			);
+			path = InfoItem;
+			sourceTree = "<group>";
+		};
 		F2C0FCFC262D587D00D86C34 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +193,10 @@
 		F2C0FD07262D587D00D86C34 /* magic */ = {
 			isa = PBXGroup;
 			children = (
+				F27A9641264009710029C266 /* InfoItem */,
+				F27A9640264009460029C266 /* ItemView */,
+				F27F9A6E263A9808007F08DF /* Routing.swift */,
+				F27F9A67263A97DC007F08DF /* Entity.swift */,
 				F2C0FD08262D587D00D86C34 /* AppDelegate.swift */,
 				F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */,
 				F2C0FD0C262D587D00D86C34 /* PresentationView.swift */,
@@ -164,12 +205,11 @@
 				F2C0FD13262D587E00D86C34 /* LaunchScreen.storyboard */,
 				F2C0FD16262D587E00D86C34 /* Info.plist */,
 				F2C0FD4A262D6C4200D86C34 /* ItemCell.swift */,
-				F2FDA8BE262D762E00CBACA6 /* Card.swift */,
 				F2FDA8C6262D798D00CBACA6 /* ItemData.swift */,
-				F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */,
 				F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */,
 				F2FDA8DE262D99B300CBACA6 /* CardStore.swift */,
-				F2E793E0262EF56B0046DF68 /* InfoItemController.swift */,
+				F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */,
+				F226B6CD26415C5D00F1AF42 /* Model.swift */,
 			);
 			path = magic;
 			sourceTree = "<group>";
@@ -449,14 +489,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F230DBB6263C1E79009A1F2A /* JSONSaveLoad.swift in Sources */,
 				F2FDA8CC262D7BD500CBACA6 /* ItemViewController.swift in Sources */,
-				F2FDA8BF262D762E00CBACA6 /* Card.swift in Sources */,
+				F27F9A72263A9808007F08DF /* Routing.swift in Sources */,
 				F2C0FD4B262D6C4200D86C34 /* ItemCell.swift in Sources */,
 				F2FDA8C7262D798D00CBACA6 /* ItemData.swift in Sources */,
+				F27A9643264009F10029C266 /* InfoItemPresenter.swift in Sources */,
 				F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */,
+				F27A964826400A070029C266 /* InfoItemInteractor.swift in Sources */,
 				F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */,
+				F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */,
 				F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */,
+				F27F9A68263A97DC007F08DF /* Entity.swift in Sources */,
+				F27F9A70263A9808007F08DF /* View.swift in Sources */,
 				F2FDA8DF262D99B300CBACA6 /* CardStore.swift in Sources */,
+				F27F9A71263A9808007F08DF /* Presenter.swift in Sources */,
+				F27F9A73263A9808007F08DF /* Interactor.swift in Sources */,
 				F2C0FD09262D587D00D86C34 /* AppDelegate.swift in Sources */,
 				F2C0FD0B262D587D00D86C34 /* SceneDelegate.swift in Sources */,
 			);

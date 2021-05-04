@@ -13,6 +13,11 @@ class InfoItemController: UIViewController {
     @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
     
+    var row: Int = 0
+    
+    var infoItemPresenter: InfoItemPresenter?
+    var model = Model()
+    
     var card: Card! {
         didSet {
             navigationItem.title = card.name
@@ -21,12 +26,13 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        name.text = card.name
-        descr.text = card.descr
-        let url = card.imageUrl
-        cardPhoto.kf.setImage(with: url)
-         
+        self.infoItemPresenter?.showCardRequest(row: row)
+    }
+    
+    func showCard(labelName: String, description: String, photoURL: URL) {
+        self.name.text = labelName
+        self.descr.text = description
+        cardPhoto.kf.setImage(with: photoURL)
     }
 
 }
