@@ -27,7 +27,6 @@ class CardStore {
       
         let request = URLRequest(url: cardURL)
         let task = session.dataTask(with: request) { (data, _, error) in
-            
             let result = self.processImageRequest(data: data, error: error)
             OperationQueue.main.addOperation {
                 completion(result)

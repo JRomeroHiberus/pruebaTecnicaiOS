@@ -9,12 +9,11 @@
 
 import Foundation
 import Moya
-class Interactor: LoadAndSave {
+class Interactor {
     
     var presenter: Presenter?
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
-    // var itemData: ItemData = ItemData(cardStorage: [])
     var model = Model()
     var isFetchInProgress = false
     var currentPage = 1
@@ -36,46 +35,28 @@ class Interactor: LoadAndSave {
         
         isFetchInProgress = true
         print("Interactor recibe peticion de fetch")
-        
         provider.request(.pagination(page: currentPage)) { result in
-            
             switch result {
             case .success(let response):
                 do {
-                    
                     self.isFetchInProgress = false
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-                   /* var data = Data()
-                    if self.currentPage == 1 {
-                        try Interactor.saveJSON(data: data, file: "model", isFirst: true)
-                        
-                    }
-                    data = response.data
-                    if try Interactor.saveJSON(data: data, file: "model", isFirst: false) {*/
                         for card in cards {
-                            // self.itemData.addItem(item: card)
                             self.model.itemData.addItem(item: card)
                         }
-                        print("Fetch realizado")
                         self.currentPage += 1
                         self.sendResponseToPresenter()
-                    
-                        // self.refresh()
                 } catch {
                     print(error)
                 }
             case .failure(let error):
-                    // self.isFetchInProgress = false
                     print(error)
             }
-            
         }
-        
     }
     
     func sendResponseToPresenter() {
-    
         presenter?.receiveFetchResponse(cards: model.itemData)
     }
     

@@ -26,19 +26,7 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-       /* self.infoItemPresenter = InfoItemPresenter()
-        self.infoItemPresenter?.view = self
-        self.infoItemPresenter?.interactor = InfoItemInteractor()
-       
-        self.infoItemPresenter?.interactor?.presenter = self.infoItemPresenter*/
-        
         self.infoItemPresenter?.showCardRequest(row: row)
-        /*name.text = card.name
-        descr.text = card.descr
-        let url = card.imageUrl
-        cardPhoto.kf.setImage(with: url)*/
-         
     }
     
     func showCard(labelName: String, description: String, photoURL: URL) {
