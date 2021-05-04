@@ -9,7 +9,7 @@
 
 import Foundation
 import Moya
-class Interactor {
+class Interactor: LoadAndSave {
     
     var presenter: Presenter?
     let provider = MoyaProvider<MagicAPI>()
@@ -41,16 +41,20 @@ class Interactor {
                 do {
                     /*self.currentPage += 1
                     self.isFetchInProgress = false*/
-                   // let data = saveJSON(jsonObject: response,filename:"model")
+                    
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-                    for card in cards {
-                        self.itemData.addItem(item: card)
+                    if try Interactor.saveJSON(data: response.data, file: "model") {
+                        for card in cards {
+                            self.itemData.addItem(item: card)
+                        }
+                        print("Fetch realizado")
+                        self.sendResponseToPresenter()
+                    } else {
+                        print("Error")
                     }
-                    print("Fetch realizado")
-                    self.sendResponseToPresenter()
                     
-                    // self.refresh()
+                        // self.refresh()
                 } catch {
                     print(error)
                 }

@@ -8,6 +8,7 @@
 // Recibe el fetch del interactor en forma de string
 
 import Foundation
+import Kingfisher
 class Presenter {
     var view: ItemViewController?
     var interactor: Interactor? 

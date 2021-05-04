@@ -13,7 +13,9 @@ class InfoItemController: UIViewController {
     @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
     
-    var infoItemPresenter: Presenter?
+    var row: Int = 0
+    
+    var infoItemPresenter: InfoItemPresenter?
     
     var card: Card! {
         didSet {
@@ -24,12 +26,13 @@ class InfoItemController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        /*self.infoItemPresenter = Presenter()
-        self.infoItemPresenter?.infoItemView = self
-        self.infoItemPresenter.infoItemInteractor = Interactor()
+        self.infoItemPresenter = InfoItemPresenter()
+        self.infoItemPresenter?.view = self
+        self.infoItemPresenter?.interactor = InfoItemInteractor()
        
-        self.infoItemPresenter?.infoItem.Interactor?.infoItemPresenter = self.presenter
-        */
+        self.infoItemPresenter?.interactor?.presenter = self.infoItemPresenter
+        
+        self.infoItemPresenter?.showCardRequest(row: row)
         /*name.text = card.name
         descr.text = card.descr
         let url = card.imageUrl
@@ -37,10 +40,10 @@ class InfoItemController: UIViewController {
          
     }
     
-    func showCard(labelName:String,description:String,cardPhoto:UIImageView){
+    func showCard(labelName: String, description: String, photoURL: URL) {
         self.name.text = labelName
         self.descr.text = description
-        self.cardPhoto = cardPhoto
+        cardPhoto.kf.setImage(with: photoURL)
     }
 
 }

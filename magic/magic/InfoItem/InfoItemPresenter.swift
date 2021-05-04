@@ -6,15 +6,20 @@
 //
 
 import Foundation
-/*class InfoItemPresenter{
+import Kingfisher
+import UIKit
+
+class InfoItemPresenter {
     var view: InfoItemController?
     var interactor: InfoItemInteractor?
     var routing: Routing?
     
+    func showCardRequest(row: Int) {
+        interactor?.showCardRequest(row: row)
+    }
     
-    func showCardRequest(index:IndexPath){
-        interactor.showCardRequest(index)
+    func sendResponseToView(card: Card) {
+        view?.showCard(labelName: card.name, description: card.descr, photoURL: card.imageUrl!)
     }
 
-}*/
-
+}

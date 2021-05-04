@@ -6,4 +6,23 @@
 //
 
 import Foundation
-var presenter: Presenter?
+
+class InfoItemInteractor: LoadAndSave {
+    var presenter: InfoItemPresenter?
+    var itemData: ItemData = ItemData(cardStorage: [])
+    let jsonDecoder = JSONDecoder()
+    
+    func showCardRequest(row: Int) {
+        do {
+            print("Aqui estoy")
+            let data = try InfoItemInteractor.loadJSON(file: "model")
+            let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: data as! Data)
+            let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+            let card = cards[row]
+            print("Nombre de carta: \(card.name)")
+            presenter?.sendResponseToView(card: card)
+        } catch {
+            print(error)
+        }
+    }
+}

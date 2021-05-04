@@ -92,8 +92,9 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let row = tableV.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
                // interactor.showCardRequest(index)
-                let card = itemData.itemStorage[row]
-                infoItemController.card = card
+               /* let card = itemData.itemStorage[row]
+                infoItemController.card = card*/
+                infoItemController.row = row
             }
         default: preconditionFailure("Unexpected segue identifier")
         }
