@@ -48,11 +48,11 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-   /* func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == itemData.itemStorage.count - 1 {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == itemData.itemStorage.count - 3 {
             presenter?.fetchCards()
         }
-    }*/
+    }
     
     override func viewDidLoad() {
         
@@ -100,11 +100,11 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-   /* private func calculateIndexPathsToReload(from newCards: [Card]) -> [IndexPath] {
+    private func calculateIndexPathsToReload(from newCards: [Card]) -> [IndexPath] {
       let startIndex = itemData.itemStorage.count - newCards.count
       let endIndex = startIndex + newCards.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
-    }*/
+    }
     
     /*func fetchCards() {
         guard !isFetchInProgress else {
