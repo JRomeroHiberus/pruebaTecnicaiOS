@@ -10,6 +10,7 @@
 		0BB7F4C618CF391346598E3B /* Pods_magic_magicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6CE65EA347794211D582B7C /* Pods_magic_magicUITests.framework */; };
 		A253D24A974DE02D0FF22FA0 /* Pods_magicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43740D75556AEE5EF75F080F /* Pods_magicTests.framework */; };
 		A2E956C18EAB74D5B4711EBE /* Pods_magic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0752CCB868593D41587088 /* Pods_magic.framework */; };
+		F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226B6CD26415C5D00F1AF42 /* Model.swift */; };
 		F230DBB6263C1E79009A1F2A /* JSONSaveLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */; };
 		F25487C22630442D00B1FBB3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F25487C12630442D00B1FBB3 /* Podfile */; };
 		F27A9643264009F10029C266 /* InfoItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9642264009F10029C266 /* InfoItemPresenter.swift */; };
@@ -62,6 +63,7 @@
 		DE63105F5A6C08247AD9330A /* Pods-magic-magicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magic-magicUITests.debug.xcconfig"; path = "Target Support Files/Pods-magic-magicUITests/Pods-magic-magicUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA0752CCB868593D41587088 /* Pods_magic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_magic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF40D5F7238A601F8B6F87D3 /* Pods-magicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magicTests.release.xcconfig"; path = "Target Support Files/Pods-magicTests/Pods-magicTests.release.xcconfig"; sourceTree = "<group>"; };
+		F226B6CD26415C5D00F1AF42 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSaveLoad.swift; sourceTree = "<group>"; };
 		F25487C12630442D00B1FBB3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F27A9642264009F10029C266 /* InfoItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemPresenter.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				F2FDA8D3262D904200CBACA6 /* MagicAPI.swift */,
 				F2FDA8DE262D99B300CBACA6 /* CardStore.swift */,
 				F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */,
+				F226B6CD26415C5D00F1AF42 /* Model.swift */,
 			);
 			path = magic;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */,
 				F27A964826400A070029C266 /* InfoItemInteractor.swift in Sources */,
 				F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */,
+				F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */,
 				F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */,
 				F27F9A68263A97DC007F08DF /* Entity.swift in Sources */,
 				F27F9A70263A9808007F08DF /* View.swift in Sources */,

@@ -12,7 +12,8 @@ import Moya
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
     
     @IBOutlet var tableV: UITableView!
-    var itemData: ItemData = ItemData(cardStorage: [])
+    // var itemData: ItemData = ItemData(cardStorage: [])
+    var model = Model()
     var cartaStore: CardStore = CardStore()
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
@@ -33,14 +34,14 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemData.itemStorage.count
+        return model.itemData.itemStorage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         // let item = itemData.itemStorage[indexPath.row]
-        let item = itemData.itemStorage[indexPath.row]
+        let item = model.itemData.itemStorage[indexPath.row]
         
         cell.cellLabel.frame.size.width = 320
         cell.cellLabel.text = item.name
@@ -49,7 +50,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == itemData.itemStorage.count - 3 {
+        if indexPath.row == model.itemData.itemStorage.count - 3 {
             presenter?.fetchCards()
         }
     }
@@ -91,9 +92,18 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "showCard":
             if let row = tableV.indexPathForSelectedRow?.row {
                 let infoItemController = segue.destination as! InfoItemController
+                
                // interactor.showCardRequest(index)
                /* let card = itemData.itemStorage[row]
                 infoItemController.card = card*/
+                infoItemController.infoItemPresenter = InfoItemPresenter()
+                infoItemController.infoItemPresenter?.view = infoItemController
+                infoItemController.infoItemPresenter?.interactor = InfoItemInteractor()
+               
+                infoItemController.infoItemPresenter?.interactor?.presenter = infoItemController.infoItemPresenter
+                infoItemController.infoItemPresenter?.interactor?.model = self.model
+                // infoItemController.infoItemPresenter?.showCardRequest(row: row)
+                
                 infoItemController.row = row
             }
         default: preconditionFailure("Unexpected segue identifier")
@@ -101,7 +111,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func calculateIndexPathsToReload(from newCards: [Card]) -> [IndexPath] {
-      let startIndex = itemData.itemStorage.count - newCards.count
+        let startIndex = model.itemData.itemStorage.count - newCards.count
       let endIndex = startIndex + newCards.count
       return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
@@ -139,7 +149,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }*/
     
     func setListWithItems(cards: ItemData) {
-        self.itemData = cards
+        self.model.itemData = cards
         refresh()
     }
 }

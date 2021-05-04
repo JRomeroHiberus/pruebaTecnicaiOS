@@ -16,6 +16,7 @@ class InfoItemController: UIViewController {
     var row: Int = 0
     
     var infoItemPresenter: InfoItemPresenter?
+    var model = Model()
     
     var card: Card! {
         didSet {
@@ -26,11 +27,11 @@ class InfoItemController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.infoItemPresenter = InfoItemPresenter()
+       /* self.infoItemPresenter = InfoItemPresenter()
         self.infoItemPresenter?.view = self
         self.infoItemPresenter?.interactor = InfoItemInteractor()
        
-        self.infoItemPresenter?.interactor?.presenter = self.infoItemPresenter
+        self.infoItemPresenter?.interactor?.presenter = self.infoItemPresenter*/
         
         self.infoItemPresenter?.showCardRequest(row: row)
         /*name.text = card.name

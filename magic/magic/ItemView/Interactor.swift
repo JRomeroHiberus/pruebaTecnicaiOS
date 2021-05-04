@@ -14,7 +14,8 @@ class Interactor: LoadAndSave {
     var presenter: Presenter?
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
-    var itemData: ItemData = ItemData(cardStorage: [])
+    // var itemData: ItemData = ItemData(cardStorage: [])
+    var model = Model()
     var isFetchInProgress = false
     var currentPage = 1
     
@@ -45,24 +46,20 @@ class Interactor: LoadAndSave {
                     self.isFetchInProgress = false
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-                    var data = Data()
+                   /* var data = Data()
                     if self.currentPage == 1 {
                         try Interactor.saveJSON(data: data, file: "model", isFirst: true)
-                        data = response.data
-                    } else {
-                        data = try Interactor.loadJSON(file: "model")!
+                        
                     }
-                   
-                    if try Interactor.saveJSON(data: data, file: "model", isFirst: false) {
+                    data = response.data
+                    if try Interactor.saveJSON(data: data, file: "model", isFirst: false) {*/
                         for card in cards {
-                            self.itemData.addItem(item: card)
+                            // self.itemData.addItem(item: card)
+                            self.model.itemData.addItem(item: card)
                         }
                         print("Fetch realizado")
                         self.currentPage += 1
                         self.sendResponseToPresenter()
-                    } else {
-                        print("Error")
-                    }
                     
                         // self.refresh()
                 } catch {
@@ -79,7 +76,7 @@ class Interactor: LoadAndSave {
     
     func sendResponseToPresenter() {
     
-        presenter?.receiveFetchResponse(cards: itemData)
+        presenter?.receiveFetchResponse(cards: model.itemData)
     }
     
 }
