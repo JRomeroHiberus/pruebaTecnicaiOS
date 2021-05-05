@@ -7,11 +7,39 @@
 
 import UIKit
 
+struct InfoItemViewModel {
+    private let model: Card
+    
+    init(model: Card) {
+        self.model = model
+    }
+}
+
+extension InfoItemViewModel {
+    var name: String { return  "\(model.name)"}
+    var descr: String { return "\(model.descr)"}
+    var imageURL: URL { return model.imageUrl!}
+    var row: Int { return 0}
+    var infoItemPresenter: InfoItemPresenter { return InfoItemPresenter() }
+    var dataModel: Model { return Model() }
+}
+
 class InfoItemController: UIViewController {
+    
+    // private let viewModel: InfoItemViewModel
     
     @IBOutlet var name: UILabel!
     @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
+    
+    /*init(viewModel: InfoItemViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }*/
     
     var row: Int = 0
     

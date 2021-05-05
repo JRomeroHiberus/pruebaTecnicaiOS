@@ -11,10 +11,10 @@ import Foundation
 import Kingfisher
 class Presenter {
     var view: ItemViewController?
-    var interactor: Interactor? 
+    var interactor: Interactor?
+    var routing: Routing?
     
     func fetchCards() {
-        print("Presenter recibe peticion de fetch")
         interactor?.fetchCards()
     }
     
