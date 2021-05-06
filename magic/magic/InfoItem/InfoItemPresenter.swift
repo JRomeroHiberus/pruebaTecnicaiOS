@@ -12,6 +12,7 @@ import UIKit
 class InfoItemPresenter {
     var view: InfoItemController?
     var interactor: InfoItemInteractor?
+    var routing: Routing?
     
     func showCardRequest(row: Int) {
         interactor?.showCardRequest(row: row)

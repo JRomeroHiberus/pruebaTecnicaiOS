@@ -34,7 +34,6 @@ class Interactor {
         }
         
         isFetchInProgress = true
-        print("Interactor recibe peticion de fetch")
         provider.request(.pagination(page: currentPage)) { result in
             switch result {
             case .success(let response):

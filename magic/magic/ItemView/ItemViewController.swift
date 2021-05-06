@@ -10,7 +10,7 @@ import Kingfisher
 import Moya
 
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
-    
+   
     @IBOutlet var tableV: UITableView!
     var model = Model()
     var cartaStore: CardStore = CardStore()
@@ -59,6 +59,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.presenter?.view = self
         self.presenter?.interactor = Interactor()
         self.presenter?.interactor?.presenter = self.presenter
+        self.presenter?.routing = Routing()
         presenter?.fetchCards()
     }
     
@@ -74,13 +75,14 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         switch segue.identifier {
         case "showCard":
             if let row = tableV.indexPathForSelectedRow?.row {
-                let infoItemController = segue.destination as! InfoItemController
-                infoItemController.infoItemPresenter = InfoItemPresenter()
+                var infoItemController = segue.destination as! InfoItemController
+                infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
+               /* infoItemController.infoItemPresenter = InfoItemPresenter()
                 infoItemController.infoItemPresenter?.view = infoItemController
                 infoItemController.infoItemPresenter?.interactor = InfoItemInteractor()
                 infoItemController.infoItemPresenter?.interactor?.presenter = infoItemController.infoItemPresenter
                 infoItemController.infoItemPresenter?.interactor?.model = self.model
-                infoItemController.row = row
+                infoItemController.row = row*/
             }
         default: preconditionFailure("Unexpected segue identifier")
         }
@@ -90,4 +92,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.model.itemData = cards
         refresh()
     }
+    
+    /*func setInfoItemController(infoView:InfoItemController) -> InfoItemController {
+        
+    }*/
 }
