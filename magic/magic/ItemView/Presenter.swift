@@ -21,4 +21,15 @@ class Presenter {
     func receiveFetchResponse(cards: ItemData) {
         view?.setListWithItems(cards: cards)
     }
+    
+    func openItemDetailView(infoItemController: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
+       // print("Aqui estoy")
+        var infoItemAux = routing!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: itemView)
+        return infoItemAux
+    }
+    
+    /*func setInfoItemViewController(infoView: InfoItemController){
+        view?.setInfoItemViewController(infoView:infoView)
+    }*/
+    
 }
