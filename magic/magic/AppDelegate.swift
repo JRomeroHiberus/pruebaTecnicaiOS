@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.frame = screen.bounds
         self.window!.rootViewController = routing.presentationView
         self.window!.makeKeyAndVisible()
-        
         return true
     }
 

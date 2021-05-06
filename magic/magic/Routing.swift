@@ -46,13 +46,12 @@ class Routing {
     func openItemViewController() {
         let addVC: ItemViewController = storyBoard.instantiateViewController(withIdentifier: "ItemViewController") as! ItemViewController
         addVC.presenter = self.presenter
-        viewController.present(addVC, animated: true, completion: nil)
-        addVC.viewDidLoad()
+        navigationController?.present(addVC, animated: true, completion: nil)
         
     }
     
     func openItemDetailView() {
-        let addVC: InfoItemController = storyBoard.instantiateViewController(withIdentifier: "InfoItemViewController") as! InfoItemController
+        let addVC: InfoItemController = storyBoard.instantiateViewController(withIdentifier: "InfoItemController") as! InfoItemController
         addVC.infoItemPresenter = self.infoItemPresenter
         viewController.present(addVC, animated: true, completion: nil)
     }

@@ -10,7 +10,7 @@ import Kingfisher
 import Moya
 
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
-    
+   
     @IBOutlet var tableV: UITableView!
     var model = Model()
     var cartaStore: CardStore = CardStore()
