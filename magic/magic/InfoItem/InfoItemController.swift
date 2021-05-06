@@ -7,26 +7,9 @@
 
 import UIKit
 
-struct InfoItemViewModel {
-    private let model: Card
-    
-    init(model: Card) {
-        self.model = model
-    }
-}
-
-extension InfoItemViewModel {
-    var name: String { return  "\(model.name)"}
-    var descr: String { return "\(model.descr)"}
-    var imageURL: URL { return model.imageUrl!}
-    var row: Int { return 0}
-    var infoItemPresenter: InfoItemPresenter { return InfoItemPresenter() }
-    var dataModel: Model { return Model() }
-}
-
 class InfoItemController: UIViewController {
     
-    // private let viewModel: InfoItemViewModel
+     // private let viewModel: InfoItemViewModel
     
     @IBOutlet var name: UILabel!
     @IBOutlet var cardPhoto: UIImageView!
@@ -54,6 +37,7 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.infoItemPresenter?.showCardRequest(row: row)
     }
     
@@ -62,5 +46,13 @@ class InfoItemController: UIViewController {
         self.descr.text = description
         cardPhoto.kf.setImage(with: photoURL)
     }
+    
+    /*private func bindViewModel(){
+        viewModel.objectWillChange.sink { [ weak self] in
+            guard self != nil else {
+                return
+            }
+        }
+    }*/
 
 }

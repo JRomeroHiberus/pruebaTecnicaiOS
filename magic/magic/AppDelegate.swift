@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let routing = Routing()
         
         self.window = UIWindow()
-        var screen: UIScreen = UIScreen.main
         
         // self.window!.frame = screen.bounds
         self.window!.rootViewController = routing.navigationController
