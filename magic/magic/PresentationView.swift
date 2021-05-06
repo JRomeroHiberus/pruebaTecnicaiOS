@@ -25,7 +25,7 @@ class PresentationView: UIViewController {
     @IBAction func openItemViewController(_ sender: UIButton) {
         switch sender {
         case continueButton:
-            routing?.openItemViewController(presentationView: self, sender: sender)
+            routing?.openItemViewController(presentationView: self)
         default:
             return
         }

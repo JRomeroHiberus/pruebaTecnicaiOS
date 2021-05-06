@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow()
         var screen: UIScreen = UIScreen.main
         
-        self.window!.frame = screen.bounds
-        self.window!.rootViewController = routing.presentationView
+        // self.window!.frame = screen.bounds
+        self.window!.rootViewController = routing.navigationController
         self.window!.makeKeyAndVisible()
         return true
     }

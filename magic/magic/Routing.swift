@@ -41,13 +41,14 @@ class Routing {
         infoItemPresenter.interactor?.model = self.model
         
         navigationController = UINavigationController(rootViewController: presentationView)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationItem.leftItemsSupplementBackButton = true
     }
     
-    func openItemViewController(presentationView: PresentationView, sender: UIButton) {
+    func openItemViewController(presentationView: PresentationView) {
         let addVC: ItemViewController = storyBoard.instantiateViewController(withIdentifier: "ItemViewController") as! ItemViewController
         addVC.presenter = self.presenter
-        presentationView.present(addVC, animated: true, completion: nil)
-        // show(addVC,sender)
+        navigationController?.pushViewController(addVC, animated: true)
         
     }
     
