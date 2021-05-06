@@ -43,10 +43,11 @@ class Routing {
         navigationController = UINavigationController(rootViewController: presentationView)
     }
     
-    func openItemViewController() {
+    func openItemViewController(presentationView: PresentationView, sender: UIButton) {
         let addVC: ItemViewController = storyBoard.instantiateViewController(withIdentifier: "ItemViewController") as! ItemViewController
         addVC.presenter = self.presenter
-        navigationController?.present(addVC, animated: true, completion: nil)
+        presentationView.present(addVC, animated: true, completion: nil)
+        // show(addVC,sender)
         
     }
     
