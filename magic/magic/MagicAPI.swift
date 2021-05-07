@@ -57,11 +57,9 @@ enum MagicAPI: TargetType {
         case .noPagination:
             return .requestPlain
         }
-        
     }
     
     public var headers: [String: String]? {
         return ["Content-Type": "application/json"]
-      }
-    
+    }
 }

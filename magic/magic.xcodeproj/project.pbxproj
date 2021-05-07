@@ -12,6 +12,7 @@
 		A2E956C18EAB74D5B4711EBE /* Pods_magic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0752CCB868593D41587088 /* Pods_magic.framework */; };
 		F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226B6CD26415C5D00F1AF42 /* Model.swift */; };
 		F230DBB6263C1E79009A1F2A /* JSONSaveLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */; };
+		F2539BA5264521B00075E1BC /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2539BA4264521B00075E1BC /* ItemViewModel.swift */; };
 		F25487C22630442D00B1FBB3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F25487C12630442D00B1FBB3 /* Podfile */; };
 		F27A9643264009F10029C266 /* InfoItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A9642264009F10029C266 /* InfoItemPresenter.swift */; };
 		F27A964826400A070029C266 /* InfoItemInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27A964726400A070029C266 /* InfoItemInteractor.swift */; };
@@ -65,6 +66,7 @@
 		EF40D5F7238A601F8B6F87D3 /* Pods-magicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-magicTests.release.xcconfig"; path = "Target Support Files/Pods-magicTests/Pods-magicTests.release.xcconfig"; sourceTree = "<group>"; };
 		F226B6CD26415C5D00F1AF42 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F230DBB5263C1E79009A1F2A /* JSONSaveLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSaveLoad.swift; sourceTree = "<group>"; };
+		F2539BA4264521B00075E1BC /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		F25487C12630442D00B1FBB3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F27A9642264009F10029C266 /* InfoItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemPresenter.swift; sourceTree = "<group>"; };
 		F27A964726400A070029C266 /* InfoItemInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemInteractor.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				F27F9A6C263A9808007F08DF /* View.swift */,
 				F27F9A6D263A9808007F08DF /* Presenter.swift */,
 				F27F9A6F263A9808007F08DF /* Interactor.swift */,
+				F2539BA4264521B00075E1BC /* ItemViewModel.swift */,
 			);
 			path = ItemView;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */,
 				F27A964826400A070029C266 /* InfoItemInteractor.swift in Sources */,
 				F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */,
+				F2539BA5264521B00075E1BC /* ItemViewModel.swift in Sources */,
 				F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */,
 				F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */,
 				F27F9A68263A97DC007F08DF /* Entity.swift in Sources */,

@@ -107,5 +107,8 @@ iOSInjectionProject/
 *.xcuserstate
 magic/magic.xcworkspace/xcuserdata/josemanuelromeroclaveria.xcuserdatad/UserInterfaceState.xcuserstate
 magic/magic/.DS_Store
+<<<<<<< Updated upstream
 magic/magic.xcworkspace/xcuserdata/josemanuelromeroclaveria.xcuserdatad/UserInterfaceState.xcuserstate
 *.pbxproj
+=======
+>>>>>>> Stashed changes
