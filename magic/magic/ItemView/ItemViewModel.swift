@@ -57,4 +57,10 @@ class ItemViewModel: ObservableObject {
             }
         }
     }
+    
+    func openDetailViewController(infoItem: InfoItemController, row: Int) -> InfoItemController {
+        infoItem.row = row
+        infoItem.viewModel = self
+        return infoItem
+    }
 }

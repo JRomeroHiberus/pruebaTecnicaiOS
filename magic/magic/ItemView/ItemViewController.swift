@@ -60,7 +60,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
         bindViewModel()
         viewModel.fetchCards()
-          
     }
     
     func refresh() {
@@ -76,7 +75,9 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "showCard":
             if let row = tableV.indexPathForSelectedRow?.row {
                 var infoItemController = segue.destination as! InfoItemController
-                infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
+                // infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
+                bindOpenDetailViewModel()
+                infoItemController = viewModel.openDetailViewController(infoItem: infoItemController, row: row)
              
             }
         default: preconditionFailure("Unexpected segue identifier")
@@ -96,7 +97,18 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             self?.refresh()
         }.store(in: &cancellables)
-        // .subscribe(viewModel.itemChanged)
+        
+    }
+    
+    private func bindOpenDetailViewModel() {
+        viewModel.itemChanged.sink { [weak self] in
+        
+            guard self != nil else {
+                return
+            }
+            self?.refresh()
+        }.store(in: &cancellables)
+        
     }
     
 }

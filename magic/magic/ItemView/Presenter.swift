@@ -23,13 +23,8 @@ class Presenter {
     }
     
     func openItemDetailView(infoItemController: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
-<<<<<<< Updated upstream
-   
-=======
-       // print("Aqui estoy")
->>>>>>> Stashed changes
         let infoItemAux = routing!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: itemView)
         return infoItemAux
     }
-  
+    
 }
