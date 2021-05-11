@@ -29,9 +29,10 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let cardAux = viewModel.itemData.itemStorage[row]
+       /* let cardAux = viewModel.itemData.itemStorage[row]
         showCard(labelName: cardAux.name, description: cardAux.descr, photoURL: cardAux.imageUrl!)
-    }
+        */
+ }
     
     func showCard(labelName: String, description: String, photoURL: URL) {
         self.name.text = labelName

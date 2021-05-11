@@ -8,15 +8,15 @@
 import UIKit
 import RxSwift
 
-struct ItemData {
-    var itemStorage = PublishSubject<[Card]>()
+class ItemData {
+    var itemStorage = [Card]()
     
-    /*init(cardStorage: [Card]) {
+    init(cardStorage: [Card]) {
         itemStorage = cardStorage
     }
     
     func addItem(item: Card) {
         itemStorage.append(item)
-    }*/
+    }
     
 }

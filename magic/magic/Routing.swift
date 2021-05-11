@@ -24,7 +24,7 @@ class Routing {
     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
     
     init() {
-        viewController.presenter = presenter
+        // viewController.presenter = presenter
         presenter.view = viewController
         presenter.interactor = interactor
         presenter.routing = self
@@ -47,7 +47,7 @@ class Routing {
     
     func openItemViewController(presentationView: PresentationView) {
         let addVC: ItemViewController = storyBoard.instantiateViewController(withIdentifier: "ItemViewController") as! ItemViewController
-        addVC.presenter = self.presenter
+       // addVC.presenter = self.presenter
         navigationController?.pushViewController(addVC, animated: true)
         
     }

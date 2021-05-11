@@ -23,10 +23,12 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
+    private var cards = [Card]()
     private var bag = DisposeBag()
-    //var presenter: Presenter?
     
-    struct Card {
+    // var presenter: Presenter?
+    
+    /*struct Card {
         var name = ""
         var originalText = ""
         
@@ -34,22 +36,25 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.name = name
             self.originalText = descr
         }
-    }
+    }*/
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.itemData.itemStorage.count
+       // return viewModel.itemData.itemStorage.count
+        return cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-        let item = viewModel.itemData.itemStorage[indexPath.row]
+        // let item = viewModel.itemData.itemStorage[indexPath.row]
+        let item = cards[indexPath.row]
         cell.cellLabel.frame.size.width = 320
         cell.cellLabel.text = item.name
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.itemData.itemStorage.count - 3 {
+        /// if indexPath.row == viewModel.itemData.itemStorage.count - 3 {
+        if indexPath.row == cards.count - 3 {
             viewModel.fetchCards()
         }
     }
@@ -61,8 +66,9 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
-        bindViewModel()
-        viewModel.fetchCards()
+        /*bindViewModel()
+        viewModel.fetchCards()*/
+        setData()
     }
     
     func refresh() {
@@ -113,9 +119,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }.store(in: &cancellables)
         
     }
-    
    
-    private func setUpBindings(){
+  /*  private func setUpBindings(){
         viewModel.itemData.itemStorage.bind(
             to: tableV.rx.items(cellIdentifier: "ItemCell")) { row, item, cell in
             cell.textLabel?.text = item.name
@@ -125,6 +130,14 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print(card.name)
         }.disposed(by: bag)
         
+    }*/
+    
+    private func setData() {
+        return viewModel.fetchCards()
+            .subscribe(onNext: { cards in
+                self.cards = cards
+                self.refresh()
+            }).disposed(by: bag)
     }
     
 }

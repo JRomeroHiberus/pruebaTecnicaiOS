@@ -11,18 +11,17 @@ import Combine
 import RxSwift
 import RxCocoa
 
-
-class ItemViewModel: ObservableObject {
+class ItemViewModel {
 
     var cartaStore: CardStore = CardStore()
     let provider = MoyaProvider<MagicAPI>()
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
-    var itemData = ItemData()//(cardStorage: [])
+    var itemData = ItemData(cardStorage: [])
     let itemChanged = PassthroughSubject<Void, Never>()
     
-    struct Card {
+    /*struct Card {
         var name = ""
         var originalText = ""
         
@@ -30,7 +29,7 @@ class ItemViewModel: ObservableObject {
             self.name = name
             self.originalText = descr
         }
-    }
+    }*/
     
     /*func fetchCards() {
         guard !isFetchInProgress else {
@@ -61,31 +60,21 @@ class ItemViewModel: ObservableObject {
         }
     }*/
     
-    
-    func fetchCards() -> Observable<[Card]>{
+    func fetchCards() -> Observable<[Card]> {
        /* guard !isFetchInProgress else {
             return
         }*/
         
         isFetchInProgress = true
-        //return .create ({[self] (observable) -> Disposable in
-        let callBack = provider.request(.pagination(page: currentPage)) { result in
+        return Observable.create { observer in
+            self.provider.request(.pagination(page: self.currentPage)) { result in
             switch result {
             case .success(let response):
                 do {
                     self.isFetchInProgress = false
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-           //         magicResponse.cards.
-             //       cards.asObservable
-                        for card in cards {
-                            //self.itemData.addItem(item: card)
-                            self.itemData.itemStorage.on(.next(card))
-                        }
-                    self.itemData.itemStorage.onCompleted()
-                    //let responseResult = (cards == nil) ? response.empty : response.succeed(data:cards)
-                    //observable.onNext(itemData.itemStorage)
-                    
+                    observer.onNext(cards)
                     self.currentPage += 1
                     self.itemChanged.send()
                  
@@ -96,13 +85,9 @@ class ItemViewModel: ObservableObject {
                     print(error)
             }
         }
+            return Disposables.create {  }
+    }
 }
-    
-    
-    
-    
-    
-    
     
     func openDetailViewController(infoItem: InfoItemController, row: Int) -> InfoItemController {
         infoItem.row = row
