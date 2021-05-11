@@ -114,14 +114,17 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+   
     private func setUpBindings(){
         viewModel.itemData.itemStorage.bind(
             to: tableV.rx.items(cellIdentifier: "ItemCell")) { row, item, cell in
             cell.textLabel?.text = item.name
-            
-            
-            
         }.disposed(by: bag)
+        
+        tableV.rx.modelSelected(Card.self).bind { card in
+            print(card.name)
+        }.disposed(by: bag)
+        
     }
     
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Card: Equatable, Codable {
+struct Card: Equatable, Codable {
     static func == (lhs: Card, rhs: Card) -> Bool {
         return lhs.name == rhs.name
     }

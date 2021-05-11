@@ -8,8 +8,8 @@
 import UIKit
 import RxSwift
 
-class ItemData {
-    var itemStorage = PublishSubject<Card>()
+struct ItemData {
+    var itemStorage = PublishSubject<[Card]>()
     
     /*init(cardStorage: [Card]) {
         itemStorage = cardStorage
