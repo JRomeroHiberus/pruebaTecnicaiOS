@@ -21,16 +21,6 @@ class ItemViewModel {
     var itemData = ItemData(cardStorage: [])
     let itemChanged = PassthroughSubject<Void, Never>()
     
-    /*struct Card {
-        var name = ""
-        var originalText = ""
-        
-        init(name: String, descr: String) {
-            self.name = name
-            self.originalText = descr
-        }
-    }*/
-    
     /*func fetchCards() {
         guard !isFetchInProgress else {
             return
@@ -84,14 +74,15 @@ class ItemViewModel {
             case .failure(let error):
                     print(error)
             }
+                
         }
             return Disposables.create {  }
     }
 }
     
-    func openDetailViewController(infoItem: InfoItemController, row: Int) -> InfoItemController {
+    /*func openDetailViewController(infoItem: InfoItemController, row: Int) -> InfoItemController {
         infoItem.row = row
         infoItem.viewModel = self
         return infoItem
-    }
+    }*/
 }

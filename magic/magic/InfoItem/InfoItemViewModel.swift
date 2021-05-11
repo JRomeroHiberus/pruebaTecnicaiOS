@@ -2,31 +2,48 @@
 //  InfoItemViewModel.swift
 //  magic
 //
-//  Created by José Manuel Romero Clavería on 6/5/21.
+//  Created by José Manuel Romero Clavería on 11/5/21.
 //
 
 import Foundation
-import Combine
+import Moya
+import RxSwift
+import RxCocoa
 
-class InfoItemViewModel: ObservableObject {
-    private let model: Card
-    let objectWillChange = PassthroughSubject<Void, Never>()
+class InfoItemViewModel {
     
-    init(model: Card) {
-        self.model = model
+    var cartaStore: CardStore = CardStore()
+    let provider = MoyaProvider<MagicAPI>()
+    let jsonDecoder = JSONDecoder()
+    
+    var currentPage = 1
+    var isFetchInProgress = false
+    var itemData = ItemData(cardStorage: [])
+    private var bag = DisposeBag()
+    
+    func fetchCards() -> Observable<[Card]> {
+    
+        return Observable.create { observer in
+            self.provider.request(.pagination(page: self.currentPage)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    self.isFetchInProgress = false
+                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
+                    let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+                    observer.onNext(cards)
+                    self.currentPage += 1
+                    // self.itemChanged.send()
+                 
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                    print(error)
+            }
+        }
+            return Disposables.create {  }
     }
 }
-
-extension InfoItemViewModel {
-    var name: String { return  "\(model.name)"}
-    var descr: String { return "\(model.descr)"}
-    var imageURL: URL { return model.imageUrl!}
-    var row: Int { return 0}
-    var infoItemPresenter: InfoItemPresenter { return InfoItemPresenter() }
-    var dataModel: Model { return Model() }
-    
-    func fetch() {
-        objectWillChange.send()
-    }
     
 }

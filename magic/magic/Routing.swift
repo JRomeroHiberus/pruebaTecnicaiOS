@@ -33,11 +33,11 @@ class Routing {
         
         presentationView.routing = self
         
-        infoItemController.infoItemPresenter = InfoItemPresenter()
+      //  infoItemController.infoItemPresenter = InfoItemPresenter()
         infoItemPresenter.view = infoItemController
         infoItemPresenter.routing = self
         infoItemPresenter.interactor = InfoItemInteractor()
-        infoItemPresenter.interactor?.presenter = infoItemController.infoItemPresenter
+       // infoItemPresenter.interactor?.presenter = infoItemController.infoItemPresenter
         infoItemPresenter.interactor?.model = self.model
         
         navigationController = UINavigationController(rootViewController: presentationView)
@@ -52,7 +52,7 @@ class Routing {
         
     }
     
-    func openItemDetailView(infoItemController: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
+  /*  func openItemDetailView(infoItemController: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
         
          infoItemController.infoItemPresenter = InfoItemPresenter()
          infoItemController.infoItemPresenter?.view = infoItemController
@@ -62,6 +62,6 @@ class Routing {
          infoItemController.row = row
          return infoItemController
         
-    }
+    }*/
     
 }

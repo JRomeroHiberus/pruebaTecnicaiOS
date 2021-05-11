@@ -85,8 +85,9 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let row = tableV.indexPathForSelectedRow?.row {
                 var infoItemController = segue.destination as! InfoItemController
                 // infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
-                bindOpenDetailViewModel()
-                infoItemController = viewModel.openDetailViewController(infoItem: infoItemController, row: row)
+                // bindOpenDetailViewModel()
+                infoItemController.row = row
+                // infoItemController = viewModel.openDetailViewController(infoItem: infoItemController, row: row)
              
             }
         default: preconditionFailure("Unexpected segue identifier")
@@ -134,10 +135,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func setData() {
         return viewModel.fetchCards()
-            .subscribe(onNext: { cards in
-                self.cards = cards
-                self.refresh()
-            }).disposed(by: bag)
+            .subscribe(
+                onNext: { cards in
+                    self.cards = cards
+                    self.refresh()
+                },
+                onCompleted: {}
+            ).disposed(by: bag)
     }
     
 }
