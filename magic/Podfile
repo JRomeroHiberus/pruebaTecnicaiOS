@@ -20,5 +20,8 @@ pod 'AFNetworking'
 pod 'Kingfisher'
 pod 'Moya'
 pod 'SwiftLint'
+pod 'RxSwift'
+pod 'RxCocoa'
+pod 'Moya/RxSwift'
 end
 

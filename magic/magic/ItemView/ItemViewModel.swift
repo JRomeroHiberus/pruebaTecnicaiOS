@@ -8,6 +8,9 @@
 import Foundation
 import Moya
 import Combine
+import RxSwift
+import RxCocoa
+
 
 class ItemViewModel: ObservableObject {
 
@@ -16,7 +19,7 @@ class ItemViewModel: ObservableObject {
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
-    var itemData = ItemData(cardStorage: [])
+    var itemData = ItemData()//(cardStorage: [])
     let itemChanged = PassthroughSubject<Void, Never>()
     
     struct Card {
@@ -29,7 +32,7 @@ class ItemViewModel: ObservableObject {
         }
     }
     
-    func fetchCards() {
+    /*func fetchCards() {
         guard !isFetchInProgress else {
             return
         }
@@ -56,7 +59,50 @@ class ItemViewModel: ObservableObject {
                     print(error)
             }
         }
-    }
+    }*/
+    
+    
+    func fetchCards() -> Observable<[Card]>{
+       /* guard !isFetchInProgress else {
+            return
+        }*/
+        
+        isFetchInProgress = true
+        //return .create ({[self] (observable) -> Disposable in
+        let callBack = provider.request(.pagination(page: currentPage)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    self.isFetchInProgress = false
+                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
+                    let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+           //         magicResponse.cards.
+             //       cards.asObservable
+                        for card in cards {
+                            //self.itemData.addItem(item: card)
+                            self.itemData.itemStorage.on(.next(card))
+                        }
+                    self.itemData.itemStorage.onCompleted()
+                    //let responseResult = (cards == nil) ? response.empty : response.succeed(data:cards)
+                    //observable.onNext(itemData.itemStorage)
+                    
+                    self.currentPage += 1
+                    self.itemChanged.send()
+                 
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                    print(error)
+            }
+        }
+}
+    
+    
+    
+    
+    
+    
     
     func openDetailViewController(infoItem: InfoItemController, row: Int) -> InfoItemController {
         infoItem.row = row

@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 import Moya
 import Combine
+import RxSwift
+import RxCocoa
 
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
    
@@ -21,7 +23,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
-    var presenter: Presenter?
+    private var bag = DisposeBag()
+    //var presenter: Presenter?
     
     struct Card {
         var name = ""
@@ -109,6 +112,16 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self?.refresh()
         }.store(in: &cancellables)
         
+    }
+    
+    private func setUpBindings(){
+        viewModel.itemData.itemStorage.bind(
+            to: tableV.rx.items(cellIdentifier: "ItemCell")) { row, item, cell in
+            cell.textLabel?.text = item.name
+            
+            
+            
+        }.disposed(by: bag)
     }
     
 }
