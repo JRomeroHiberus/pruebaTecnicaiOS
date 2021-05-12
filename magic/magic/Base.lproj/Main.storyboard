@@ -44,8 +44,7 @@
                                         <rect key="frame" x="173.5" y="568.5" width="67" height="189.5"/>
                                         <state key="normal" title="Continuar"/>
                                         <connections>
-                                            <action selector="openItemViewController:" destination="4Wk-pq-aXV" eventType="touchUpInside" id="D2C-eT-Xys"/>
-                                            <segue destination="dAu-1x-fhI" kind="show" id="WIN-Yv-i35"/>
+                                            <segue destination="dAu-1x-fhI" kind="show" id="AKd-bi-KLJ"/>
                                         </connections>
                                     </button>
                                 </subviews>

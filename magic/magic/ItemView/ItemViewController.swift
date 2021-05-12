@@ -3,18 +3,14 @@ import Kingfisher
 import Moya
 import Combine
 
-class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
+class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     @IBOutlet var tableV: UITableView!
     let viewModel: ItemViewModel = ItemViewModel()
     var model = Model()
-    var cartaStore: CardStore = CardStore()
     private var cancellables: Set<AnyCancellable> = []
-    let provider = MoyaProvider<MagicAPI>()
-    let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
-    var presenter: Presenter?
     
     struct Card {
         var name = ""
@@ -68,7 +64,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "showCard":
             if let row = tableV.indexPathForSelectedRow?.row {
                 var infoItemController = segue.destination as! InfoItemController
-                // infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
                 bindOpenDetailViewModel()
                 infoItemController = viewModel.openDetailViewController(infoItem: infoItemController, row: row)
              
@@ -84,10 +79,11 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func bindViewModel() {
         viewModel.itemChanged.sink { [weak self] in
-        
+
             guard self != nil else {
                 return
             }
+            
             self?.refresh()
         }.store(in: &cancellables)
         
@@ -101,6 +97,5 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             self?.refresh()
         }.store(in: &cancellables)
-        
     }
 }

@@ -18,7 +18,6 @@ class InfoItemController: UIViewController {
     
     var row: Int = 0
     
-    var infoItemPresenter: InfoItemPresenter?
     var model = Model()
     
     var card: Card! {

@@ -16,14 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions
                         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let routing = Routing()
-        
-        self.window = UIWindow()
-        var screen: UIScreen = UIScreen.main
-        
-        // self.window!.frame = screen.bounds
-        self.window!.rootViewController = routing.navigationController
-        self.window!.makeKeyAndVisible()
+      
         return true
     }
 

@@ -33,7 +33,6 @@ class ItemViewModel: ObservableObject {
         guard !isFetchInProgress else {
             return
         }
-        
         isFetchInProgress = true
         provider.request(.pagination(page: currentPage)) { result in
             switch result {
@@ -45,7 +44,6 @@ class ItemViewModel: ObservableObject {
                         for card in cards {
                             self.itemData.addItem(item: card)
                         }
-                        // print("Fetch completado")
                         self.currentPage += 1
                         self.itemChanged.send()
                        
