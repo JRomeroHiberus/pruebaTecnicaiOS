@@ -12,7 +12,7 @@ import Combine
 import RxSwift
 import RxCocoa
 
-class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, viewProtocol {
+class ItemViewController: UIViewController, UIScrollViewDelegate {
    
     @IBOutlet var tableV: UITableView!
     let viewModel: ItemViewModel = ItemViewModel()
@@ -26,50 +26,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var cards = [Card]()
     private var bag = DisposeBag()
     
-    // var presenter: Presenter?
-    
-    /*struct Card {
-        var name = ""
-        var originalText = ""
-        
-        init(name: String, descr: String) {
-            self.name = name
-            self.originalText = descr
-        }
-    }*/
-    
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // return viewModel.itemData.itemStorage.count
-        return cards.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-        // let item = viewModel.itemData.itemStorage[indexPath.row]
-        let item = cards[indexPath.row]
-        cell.cellLabel.frame.size.width = 320
-        cell.cellLabel.text = item.name
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        /// if indexPath.row == viewModel.itemData.itemStorage.count - 3 {
-        if indexPath.row == cards.count - 3 {
-            viewModel.fetchCards()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableV.dataSource = self
-        tableV.delegate = self
+       // tableV.dataSource = self
+        tableV.rx.setDelegate(self).disposed(by: bag)
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
-        tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
-        /*bindViewModel()
-        viewModel.fetchCards()*/
-        viewModel.fetchCards()
-        bindViewModel()
+        setUpBindings()
         setData()
     }
     
@@ -86,11 +49,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "showCard":
             if let row = tableV.indexPathForSelectedRow?.row {
                 var infoItemController = segue.destination as! InfoItemController
-                // infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
-                // bindOpenDetailViewModel()
                 infoItemController.card = cards[row]
-                // infoItemController = viewModel.openDetailViewController(infoItem: infoItemController, row: row)
-             
             }
         default: preconditionFailure("Unexpected segue identifier")
         }
@@ -124,15 +83,20 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
    
     private func setUpBindings() {
+        tableV.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+        
         viewModel.itemData.bind(
-            to: tableV.rx.items(cellIdentifier: "ItemCell")) { _, item, cell in
+            to: tableV.rx.items(cellIdentifier: "ItemCell", cellType: ItemCell.self)) { _, item, cell in
             cell.textLabel?.text = item.name
         }.disposed(by: bag)
         
         tableV.rx.modelSelected(Card.self).subscribe(onNext: {
-            [weak self] card in
-            self?.performSegue(withIdentifier: "showCard", sender: card)
-        })
+            [self] card in
+            self.performSegue(withIdentifier: "showCard", sender: card)
+        }).disposed(by: bag)
+        
+        viewModel.fetchCards()
+        
     }
     
     private func setData() {
