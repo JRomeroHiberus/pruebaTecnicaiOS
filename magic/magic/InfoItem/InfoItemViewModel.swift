@@ -22,12 +22,13 @@ class InfoItemViewModel {
     private var bag = DisposeBag()
     
     func fetchCards() -> Observable<[Card]> {
-    
+        
         return Observable.create { observer in
             self.provider.request(.pagination(page: self.currentPage)) { result in
             switch result {
             case .success(let response):
                 do {
+                    print("Fetch correcto")
                     self.isFetchInProgress = false
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
@@ -36,10 +37,12 @@ class InfoItemViewModel {
                     // self.itemChanged.send()
                  
                 } catch {
+                   
                     print(error)
                 }
             case .failure(let error):
-                    print(error)
+                print("Aqui")
+                print(error)
             }
         }
             return Disposables.create {  }

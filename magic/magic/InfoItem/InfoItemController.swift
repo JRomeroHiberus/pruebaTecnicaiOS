@@ -33,7 +33,7 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchCardData()
+        // fetchCardData()
         
         setData()
        /* let cardAux = viewModel.itemData.itemStorage[row]
@@ -57,7 +57,7 @@ class InfoItemController: UIViewController {
     }
     
     private func setData() {
-        card = cards[row]
+        // card = cards[row]
         showCard(labelName: card.name, description: card.descr, photoURL: card.imageUrl!)
     }
 

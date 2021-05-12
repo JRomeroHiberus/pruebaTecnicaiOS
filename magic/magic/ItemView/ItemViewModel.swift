@@ -18,8 +18,8 @@ class ItemViewModel {
     let jsonDecoder = JSONDecoder()
     var currentPage = 1
     var isFetchInProgress = false
-    var itemData = ItemData(cardStorage: [])
     let itemChanged = PassthroughSubject<Void, Never>()
+    var itemData = PublishSubject<[Card]>()
     
     /*func fetchCards() {
         guard !isFetchInProgress else {
@@ -50,7 +50,7 @@ class ItemViewModel {
         }
     }*/
     
-    func fetchCards() -> Observable<[Card]> {
+    /*func fetchCards() -> Observable<[Card]> {
        /* guard !isFetchInProgress else {
             return
         }*/
@@ -66,7 +66,8 @@ class ItemViewModel {
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
                     observer.onNext(cards)
                     self.currentPage += 1
-                    self.itemChanged.send()
+                    observer.onCompleted()
+                    //self.itemChanged.send()
                  
                 } catch {
                     print(error)
@@ -78,11 +79,37 @@ class ItemViewModel {
         }
             return Disposables.create {  }
     }
-}
+}*/
     
     /*func openDetailViewController(infoItem: InfoItemController, row: Int) -> InfoItemController {
         infoItem.row = row
         infoItem.viewModel = self
         return infoItem
     }*/
+    
+    func fetchCards() {
+        guard !isFetchInProgress else {
+            return
+        }
+        
+        isFetchInProgress = true
+            self.provider.request(.pagination(page: self.currentPage)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    self.isFetchInProgress = false
+                    let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
+                    let cards = magicResponse.cards.filter { $0.imageUrl != nil }
+                    self.itemData.onNext(cards)
+                    self.currentPage += 1
+                    self.itemData.onCompleted()
+                 
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                    print(error)
+            }
+        }
+    }
 }

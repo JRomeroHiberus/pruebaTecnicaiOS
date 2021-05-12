@@ -68,6 +68,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
         /*bindViewModel()
         viewModel.fetchCards()*/
+        viewModel.fetchCards()
+        bindViewModel()
         setData()
     }
     
@@ -86,7 +88,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 var infoItemController = segue.destination as! InfoItemController
                 // infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
                 // bindOpenDetailViewModel()
-                infoItemController.row = row
+                infoItemController.card = cards[row]
                 // infoItemController = viewModel.openDetailViewController(infoItem: infoItemController, row: row)
              
             }
@@ -121,20 +123,20 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
    
-  /*  private func setUpBindings(){
-        viewModel.itemData.itemStorage.bind(
-            to: tableV.rx.items(cellIdentifier: "ItemCell")) { row, item, cell in
+    private func setUpBindings() {
+        viewModel.itemData.bind(
+            to: tableV.rx.items(cellIdentifier: "ItemCell")) { _, item, cell in
             cell.textLabel?.text = item.name
         }.disposed(by: bag)
         
-        tableV.rx.modelSelected(Card.self).bind { card in
-            print(card.name)
-        }.disposed(by: bag)
-        
-    }*/
+        tableV.rx.modelSelected(Card.self).subscribe(onNext: {
+            [weak self] card in
+            self?.performSegue(withIdentifier: "showCard", sender: card)
+        })
+    }
     
     private func setData() {
-        return viewModel.fetchCards()
+        return viewModel.itemData
             .subscribe(
                 onNext: { cards in
                     self.cards = cards
