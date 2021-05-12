@@ -54,7 +54,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableV.delegate = self
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
-        tableV.register(ItemCell.self, forCellReuseIdentifier: "itemCell")
+        tableV.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
         self.presenter = Presenter()
         self.presenter?.view = self
         self.presenter?.interactor = Interactor()
@@ -77,12 +77,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let row = tableV.indexPathForSelectedRow?.row {
                 var infoItemController = segue.destination as! InfoItemController
                 infoItemController = presenter!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: self)
-               /* infoItemController.infoItemPresenter = InfoItemPresenter()
-                infoItemController.infoItemPresenter?.view = infoItemController
-                infoItemController.infoItemPresenter?.interactor = InfoItemInteractor()
-                infoItemController.infoItemPresenter?.interactor?.presenter = infoItemController.infoItemPresenter
-                infoItemController.infoItemPresenter?.interactor?.model = self.model
-                infoItemController.row = row*/
             }
         default: preconditionFailure("Unexpected segue identifier")
         }
@@ -92,8 +86,4 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.model.itemData = cards
         refresh()
     }
-    
-    /*func setInfoItemController(infoView:InfoItemController) -> InfoItemController {
-        
-    }*/
 }
