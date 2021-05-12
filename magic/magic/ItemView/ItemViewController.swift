@@ -16,19 +16,12 @@ class ItemViewController: UIViewController, UIScrollViewDelegate {
    
     @IBOutlet var tableV: UITableView!
     let viewModel: ItemViewModel = ItemViewModel()
-    var model = Model()
-    var cartaStore: CardStore = CardStore()
-    private var cancellables: Set<AnyCancellable> = []
-    let provider = MoyaProvider<MagicAPI>()
-    let jsonDecoder = JSONDecoder()
-    var currentPage = 1
     var isFetchInProgress = false
     private var cards = [Card]()
     private var bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // tableV.dataSource = self
         tableV.rx.setDelegate(self).disposed(by: bag)
         tableV.rowHeight = UITableView.automaticDimension
         tableV.estimatedRowHeight = 65
@@ -54,34 +47,7 @@ class ItemViewController: UIViewController, UIScrollViewDelegate {
         default: preconditionFailure("Unexpected segue identifier")
         }
     }
-    
-    func setListWithItems(cards: ItemData) {
-        self.model.itemData = cards
-        refresh()
-    }
-    
-    private func bindViewModel() {
-        viewModel.itemChanged.sink { [weak self] in
-        
-            guard self != nil else {
-                return
-            }
-            self?.refresh()
-        }.store(in: &cancellables)
-        
-    }
-    
-    private func bindOpenDetailViewModel() {
-        viewModel.itemChanged.sink { [weak self] in
-        
-            guard self != nil else {
-                return
-            }
-            self?.refresh()
-        }.store(in: &cancellables)
-        
-    }
-   
+       
     private func setUpBindings() {
         tableV.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
         

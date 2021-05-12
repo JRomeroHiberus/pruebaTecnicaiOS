@@ -14,8 +14,6 @@ class PresentationView: UIViewController {
     @IBOutlet var continueButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        // continueButton.addTarget(self, action: #selector(openItemViewController), for: .allTouchEvents)
         routing = Routing()
         if routing == nil {
             print("No inicializado")

@@ -19,10 +19,10 @@ class Presenter {
     }
     
     func receiveFetchResponse(cards: ItemData) {
-        view?.setListWithItems(cards: cards)
+        //view?.setListWithItems(cards: cards)
     }
     
-   /* func openItemDetailView(infoItemController: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
+   /* func openItemDetailView(infoItem: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
         let infoItemAux = routing!.openItemDetailView(infoItemController: infoItemController, row: row, itemView: itemView)
         return infoItemAux
     }*/

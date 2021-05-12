@@ -34,7 +34,6 @@ class InfoItemViewModel {
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
                     observer.onNext(cards)
                     self.currentPage += 1
-                    // self.itemChanged.send()
                  
                 } catch {
                    

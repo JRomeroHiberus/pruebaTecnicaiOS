@@ -11,18 +11,12 @@ import RxSwift
 
 class InfoItemController: UIViewController {
     
-    // var viewModel: ItemViewModel = ItemViewModel()
     var viewModel: InfoItemViewModel = InfoItemViewModel()
     var cards = [Card]()
     
     @IBOutlet var name: UILabel!
     @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
-    
-    var row: Int = 0
-    
-    // var infoItemPresenter: InfoItemPresenter?
-    // var model = Model()
     private var bag = DisposeBag()
     
     var card: Card! {
@@ -33,12 +27,7 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // fetchCardData()
-        
-        setData()
-       /* let cardAux = viewModel.itemData.itemStorage[row]
-        showCard(labelName: cardAux.name, description: cardAux.descr, photoURL: cardAux.imageUrl!)
-        */
+        showCard(labelName: card.name, description: card.descr, photoURL: card.imageUrl!)
  }
     
     func showCard(labelName: String, description: String, photoURL: URL) {
@@ -46,19 +35,4 @@ class InfoItemController: UIViewController {
         self.descr.text = description
         cardPhoto.kf.setImage(with: photoURL)
     }
-    
-    private func fetchCardData() {
-            return viewModel.fetchCards()
-                .subscribe(onNext: { cards in
-                            self.cards = cards
-                        },
-                 onCompleted: {}
-                ).disposed(by: bag)
-    }
-    
-    private func setData() {
-        // card = cards[row]
-        showCard(labelName: card.name, description: card.descr, photoURL: card.imageUrl!)
-    }
-
 }

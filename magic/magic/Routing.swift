@@ -52,15 +52,15 @@ class Routing {
         
     }
     
-  /*  func openItemDetailView(infoItemController: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
+  /*  func openItemDetailView(infoItem: InfoItemController, row: Int, itemView: ItemViewController) -> InfoItemController {
         
-         infoItemController.infoItemPresenter = InfoItemPresenter()
-         infoItemController.infoItemPresenter?.view = infoItemController
-         infoItemController.infoItemPresenter?.interactor = InfoItemInteractor()
-         infoItemController.infoItemPresenter?.interactor?.presenter = infoItemController.infoItemPresenter
-         infoItemController.infoItemPresenter?.interactor?.model = itemView.model
-         infoItemController.row = row
-         return infoItemController
+         infoItem.infoItemPresenter = InfoItemPresenter()
+         infoItem.infoItemPresenter?.view = infoItem
+         infoItem.infoItemPresenter?.interactor = InfoItemInteractor()
+         infoItem.infoItemPresenter?.interactor?.presenter = infoItem.infoItemPresenter
+         infoItem.infoItemPresenter?.interactor?.model = itemView.model
+         infoItem.row = row
+         return infoItem
         
     }*/
     

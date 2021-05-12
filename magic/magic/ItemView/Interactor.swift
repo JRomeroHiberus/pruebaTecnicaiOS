@@ -41,9 +41,6 @@ class Interactor {
                     self.isFetchInProgress = false
                     let magicResponse = try self.jsonDecoder.decode(MagicAPI.MagicResponse.self, from: response.data)
                     let cards = magicResponse.cards.filter { $0.imageUrl != nil }
-                        for card in cards {
-                            // self.model.itemData.addItem(item: card)
-                        }
                         self.currentPage += 1
                         self.sendResponseToPresenter()
                 } catch {
