@@ -6,40 +6,15 @@
 //
 
 import UIKit
-
-struct InfoItemViewModel {
-    private let model: Card
-    
-    init(model: Card) {
-        self.model = model
-    }
-}
-
-extension InfoItemViewModel {
-    var name: String { return  "\(model.name)"}
-    var descr: String { return "\(model.descr)"}
-    var imageURL: URL { return model.imageUrl!}
-    var row: Int { return 0}
-    var infoItemPresenter: InfoItemPresenter { return InfoItemPresenter() }
-    var dataModel: Model { return Model() }
-}
+import Combine
 
 class InfoItemController: UIViewController {
     
-    // private let viewModel: InfoItemViewModel
+    var viewModel: ItemViewModel = ItemViewModel()
     
     @IBOutlet var name: UILabel!
     @IBOutlet var cardPhoto: UIImageView!
     @IBOutlet var descr: UILabel!
-    
-    /*init(viewModel: InfoItemViewModel){
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }*/
     
     var row: Int = 0
     
@@ -54,7 +29,8 @@ class InfoItemController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.infoItemPresenter?.showCardRequest(row: row)
+        let cardAux = viewModel.itemData.itemStorage[row]
+        showCard(labelName: cardAux.name, description: cardAux.descr, photoURL: cardAux.imageUrl!)
     }
     
     func showCard(labelName: String, description: String, photoURL: URL) {

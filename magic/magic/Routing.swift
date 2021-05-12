@@ -60,7 +60,6 @@ class Routing {
          infoItemController.infoItemPresenter?.interactor?.presenter = infoItemController.infoItemPresenter
          infoItemController.infoItemPresenter?.interactor?.model = itemView.model
          infoItemController.row = row
-         print("aqui estoy")
          return infoItemController
         
     }

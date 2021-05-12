@@ -20,6 +20,7 @@
 		F27F9A71263A9808007F08DF /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6D263A9808007F08DF /* Presenter.swift */; };
 		F27F9A72263A9808007F08DF /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6E263A9808007F08DF /* Routing.swift */; };
 		F27F9A73263A9808007F08DF /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27F9A6F263A9808007F08DF /* Interactor.swift */; };
+		F2C0DC2B264BEDE3009E7DAE /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0DC2A264BEDE3009E7DAE /* ItemViewModel.swift */; };
 		F2C0FD09262D587D00D86C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD08262D587D00D86C34 /* AppDelegate.swift */; };
 		F2C0FD0B262D587D00D86C34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */; };
 		F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C0FD0C262D587D00D86C34 /* PresentationView.swift */; };
@@ -73,6 +74,7 @@
 		F27F9A6D263A9808007F08DF /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		F27F9A6E263A9808007F08DF /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		F27F9A6F263A9808007F08DF /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		F2C0DC2A264BEDE3009E7DAE /* ItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		F2C0FD05262D587D00D86C34 /* magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = magic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C0FD08262D587D00D86C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2C0FD0A262D587D00D86C34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		F27A9640264009460029C266 /* ItemView */ = {
 			isa = PBXGroup;
 			children = (
+				F2C0DC2A264BEDE3009E7DAE /* ItemViewModel.swift */,
 				F2FDA8CB262D7BD500CBACA6 /* ItemViewController.swift */,
 				F27F9A6C263A9808007F08DF /* View.swift */,
 				F27F9A6D263A9808007F08DF /* Presenter.swift */,
@@ -498,6 +501,7 @@
 				F2E793E1262EF56B0046DF68 /* InfoItemController.swift in Sources */,
 				F27A964826400A070029C266 /* InfoItemInteractor.swift in Sources */,
 				F2FDA8D4262D904200CBACA6 /* MagicAPI.swift in Sources */,
+				F2C0DC2B264BEDE3009E7DAE /* ItemViewModel.swift in Sources */,
 				F226B6CE26415C5D00F1AF42 /* Model.swift in Sources */,
 				F2C0FD0D262D587D00D86C34 /* PresentationView.swift in Sources */,
 				F27F9A68263A97DC007F08DF /* Entity.swift in Sources */,
